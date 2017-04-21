@@ -1,0 +1,37 @@
+# doc/txt/xls-to-rdbms/log-test-run-entry/log-test-run-entry.test.txt
+
+	doTestLogTestRunEntry
+	
+	# Purpose:
+	# ------------------------------------------------------
+   to test the doLogTestEntry function
+
+	# Prequisites
+	# ------------------------------------------------------
+   xls-to-rdbms core funcs , perl , bash
+
+	# Installation and configurtion
+	# ------------------------------------------------------
+   uncomment thhe log-test-run-entry action line from the 
+   src/bash/xls-to-rdbms/tests/run-xls-to-rdbms-tests.lst
+	
+   # Interdependancies
+	# ------------------------------------------------------
+
+	# Usage:
+	# ------------------------------------------------------
+   uncomment the log-test-run-entry line in the file:
+   src/bash/xls-to-rdbms/tests/run-xls-to-rdbms-tests.lst
+   src/bash/xls-to-rdbms/test-xls-to-rdbms.sh
+
+	# Developent
+	# ------------------------------------------------------
+   - todo   more failing tests ...    	
+
+	# Caveats:
+	# ------------------------------------------------------
+	none yet ...
+
+
+
+# eof file: doc/txt/xls-to-rdbms/log-test-run-entry/log-test-run-entry.test.txt

@@ -1,0 +1,34 @@
+# doc/txt/xls-to-rdbms/run-xls-to-rdbms/run-xls-to-rdbms.test.txt
+
+	doTestRunXlsToRdbms
+	
+	# Purpose:
+	# ------------------------------------------------------
+	test the actual run of the run-xls-to-rdbms.sh 
+	to read the google spreadsheet
+
+	# Prequisites
+	# ------------------------------------------------------
+	perl , bash , for the perl modules check by:
+	perl src/perl/xls_to_rdbms/xls_to_rdbms_preq_checker.pl
+
+	# Installation
+	# ------------------------------------------------------
+
+	# Usage:
+	# ------------------------------------------------------
+	-- add the action name to test in the 
+	src/bash/xls-to-rdbms/tests/run-xls-to-rdbms-tests.lst
+	file
+
+	# Development
+	# ------------------------------------------------------
+	
+
+	# Caveats:
+	# ------------------------------------------------------
+	none , known , so far ..
+
+
+
+# eof file: doc/txt/xls-to-rdbms/run-xls-to-rdbms/run-xls-to-rdbms.test.txt

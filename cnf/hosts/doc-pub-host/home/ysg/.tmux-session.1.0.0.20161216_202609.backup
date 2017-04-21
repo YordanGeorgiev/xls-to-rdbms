@@ -1,0 +1,6 @@
+sess--xls-to-rdbms	win---root-mgmt	/opt/csitea/xls-to-rdbms/xls-to-rdbms.1.1.6.dev.ysg
+sess--xls-to-rdbms	win---vim-xls-to-rdbms	/opt/csitea/xls-to-rdbms/xls-to-rdbms.1.1.6.dev.ysg
+sess--xls-to-rdbms	win---vim-tool	/opt/csitea/xls-to-rdbms/xls-to-rdbms.1.1.6.dev.ysg
+sess--tool	win---root-mgmt	/opt/csitea/tool/tool.1.1.6.dev.ysg
+sess--tool	win---vim-tool	/opt/csitea/tool/tool.1.1.6.dev.ysg
+sess--tool	win---vim-tool	/opt/csitea/tool/tool.1.1.6.dev.ysg

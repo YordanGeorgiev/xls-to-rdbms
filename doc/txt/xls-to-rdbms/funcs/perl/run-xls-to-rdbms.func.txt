@@ -1,0 +1,32 @@
+# doc/txt/xls-to-rdbms/run-xls-to-rdbms/run-xls-to-rdbms.func.txt
+
+	doRunXlsToRdbms
+	
+	# Purpose:
+	# ------------------------------------------------------
+	to demonstrate how the xls_to_rdbmsl.pl entry point should be called
+
+	# Prequisites
+	# ------------------------------------------------------
+	xls_to_rdbms.sh core 
+
+	# Installation
+	# ------------------------------------------------------
+   check the src/perl/xls_to_rdbms/script/xls_to_rdbms_preq_checker.pl
+   for the perl modules you would need to install
+
+	# Interdependancies
+	# ------------------------------------------------------
+
+	# Usage:
+	# ------------------------------------------------------
+
+	# Development
+	# ------------------------------------------------------
+
+	# Caveats:
+	# ------------------------------------------------------
+   none known so far ...
+
+
+# eof file: doc/txt/xls-to-rdbms/run-xls-to-rdbms/run-xls-to-rdbms.func.txt

@@ -1,0 +1,5 @@
+sess--xls-to-rdbms	win--run-isgpub	/opt/csitea/isg-pub/isg-pub.0.9.7.tst.ysg
+sess--xls-to-rdbms	win--vim--xls-to-rdbms	/opt/csitea/xls-to-rdbms/xls-to-rdbms.1.1.6.dev.ysg
+sess--xls-to-rdbms	win--tst--xls-to-rdbms	/opt/csitea/xls-to-rdbms/xls-to-rdbms.1.1.6.tst.ysg
+sess--xls-to-rdbms	win--prd--xls-to-rdbms	/opt/csitea/xls-to-rdbms/xls-to-rdbms.1.1.6.prd.ysg
+sess--xls-to-rdbms	win--git--xls-to-rdbms	/opt/csitea/xls-to-rdbms/xls-to-rdbms.1.1.6.git.ysg

@@ -1,0 +1,36 @@
+# doc/txt/xls-to-rdbms/run-xls-to-rdbms/run-xls-to-rdbms.help.txt
+
+	doHelpRunXlsToRdbms
+	
+	# Purpose:
+	# ------------------------------------------------------
+	to provide a help description for the run-xls-to-rdbms action
+
+	# Prequisites
+	# ------------------------------------------------------
+
+	# Installation
+	# ------------------------------------------------------
+	-- todo: what are the required installations for the  
+		doHelpRunXlsToRdbms function to execute without errors
+
+	# Interdependancies
+	# ------------------------------------------------------
+	-- todo: what are the interdependancies for the  
+		doHelpRunXlsToRdbms function to execute without errors
+
+	# Usage:
+	# ------------------------------------------------------
+	-- todo: how can be the doHelpRunXlsToRdbms used 
+
+	# Development
+	# ------------------------------------------------------
+	-- todo: what issues, todos could be pointed for development
+
+	# Caveats:
+	# ------------------------------------------------------
+	-- todo: what are the known caveats of the doHelpRunXlsToRdbms functions
+
+
+
+# eof file: doc/txt/xls-to-rdbms/run-xls-to-rdbms/run-xls-to-rdbms.help.txt

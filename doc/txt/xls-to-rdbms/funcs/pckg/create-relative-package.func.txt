@@ -1,0 +1,38 @@
+# doc/txt/xls-to-rdbms/create-relative-package/create-relative-package.func.txt
+
+	doCreateRelativePackage
+	
+	# Purpose:
+	# ------------------------------------------------------
+	to create a relative zip package with the files specified
+   in the includd file
+
+	# Prequisites
+	# ------------------------------------------------------
+   gnu bash , zip , unzip , perl the include file to use, xls-to-rdbms core
+
+	# Installation
+	# ------------------------------------------------------
+   install the gnu bash , zip , perl , unzip binaries
+
+	# Interdependancies
+	# ------------------------------------------------------
+   gnu bash , zip , unzip , perl the include file to use , xls-to-rdbms core
+
+	# Usage:
+	# ------------------------------------------------------
+
+   # creates the relative package with the current env include file in met/.<<env>>.xls-to-rdbms
+   bash src/bash/xls-to-rdbms/xls-to-rdbms.sh -a create-relative-package -i
+
+   # creates the relative package with different include file
+   bash src/bash/xls-to-rdbms/xls-to-rdbms.sh -a create-relative-package -i met/.tmp.xls-to-rdbms	
+
+	# Developent
+	# ------------------------------------------------------
+
+	# Caveats:
+	# ------------------------------------------------------
+
+
+# eof file: doc/txt/xls-to-rdbms/create-relative-package/create-relative-package.func.txt
