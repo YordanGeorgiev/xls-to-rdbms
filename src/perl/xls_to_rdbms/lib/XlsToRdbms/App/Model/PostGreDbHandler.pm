@@ -30,7 +30,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 	#  input: hash ref of hash refs containing the issues 
 	#  file data  and meta data 
    # ------------------------------------------------------
-	sub doInsertSqlHashData {
+	sub doHsr3ToDb {
 
 		my $self 				= shift ; 
 		my $sql_hash 			= shift ; 	
@@ -76,7 +76,6 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       $debug_msg .= "\n db_user: $db_user \n db_user_pw $db_user_pw \n" ; 
       $objLogger->doLogDebugMsg ( $debug_msg ) ; 
      
-      # my $dbh = DBI->connect("DBI:Pg:dbname=$db_name;host=$db_host", $db_user, $db_user_pw )
       my $dbh = DBI->connect("dbi:Pg:dbname=$db_name", "", "" , {
            'RaiseError' => 1
          , 'ShowErrorStatement' => 1
@@ -101,8 +100,86 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       
       return ( $ret , $msg ) ; 	
 	}
-	#eof sub doInsertSqlHashData
+	#eof sub doHsr3ToDb
 
+	#
+	# -----------------------------------------------------------------------------
+	# runs the insert sql by passed data part 
+	# by convention is assumed that the first column is unique and update could 
+	# be performed on it ... should there be duplicates the update should fail
+	# -----------------------------------------------------------------------------
+	sub doRunUpsertSql {
+
+		my $self 			= shift ; 
+		my $table_name 	= shift ; 
+		my $refHeaders 	= shift ; 
+		my $refData 		= shift ; 
+		my $data_str 		= '' ; 
+		my @headers 		= @$refHeaders ; 
+		my @data 			= @$refData ; 
+		my $ret 				= 1 ; 
+		my $msg 				= "undefined error during Upsert to maria db" ; 
+
+
+      my $sth              = {} ;         # this is the statement handle
+      my $dbh              = {} ;         # this is the database handle
+      my $str_sql          = q{} ;        # this is the sql string to use for the query
+
+		$objLogger->doLogDebugMsg ( "\@data : @data" ) if $module_trace == 1 ; 
+		$objLogger->doLogDebugMsg ( "\@headers: @headers" ) if $module_trace == 1 ; 
+
+		my $sql_str = " INSERT INTO $table_name " ; 
+		$sql_str	.= '(' ; 
+		for (my $i=0; $i<scalar (@headers);$i++ ) {
+			$sql_str .= " $headers[$i] " . ' , ' ; 
+
+		} #eof for
+		
+		for (1..3) { chop ( $sql_str) } ; 
+		$sql_str	.= ')' ; 
+		
+		foreach my $cell_value( @data ) {
+			unless ( defined ( $cell_value )) {
+				$cell_value = '' ; 
+			}
+			#$cell_value = q{} ; 
+			$cell_value =~ s|\\|\\\\|g ; 
+			# replace the ' chars with \'
+			$cell_value 		=~ s|\'|\\\'|g ; 
+			$data_str .= "'" . "$cell_value" . "' , " ; 
+		}
+		#eof foreach
+		
+		# remove the " , " at the end 
+		for (1..3) { chop ( $data_str ) } ; 
+		
+		$sql_str	.=  " VALUES (" . "$data_str" . ')' ; 
+					$sql_str	.= ' ON DUPLICATE KEY UPDATE ' ; 
+		
+		for ( my $i=0; $i<scalar(@headers);$i++ ) {
+			$sql_str .= "$headers[$i]" . ' = ' . "'" . "$data[$i]" . "' , " ; 
+		} #eof for
+
+		for (1..3) { chop ( $sql_str) } ; 
+
+		$objLogger->doLogDebugMsg ( "sql_str : $sql_str " ) if $module_trace == 1 ; 
+
+		$sth = $dbh->prepare($sql_str ) ; 
+		
+		$ret = 0 ; $msg = 'upsert ok' ; 
+		$sth->execute( ) or $ret = 1  ;
+		$msg = $DBI::errstr if ( $ret == 1 ) ; 
+		$objLogger->LogErrorMsg ( " DBI upsert error on table: $table_name: " . $msg ) 
+			if ( $ret == 1 ) ;  
+		
+		$objLogger->doLogDebugMsg ( "ret is $ret " ) if $module_trace == 1 ; 
+		$self->CloseConnection();
+
+		$msg .= " for table : $table_name" ; 
+		
+		return ( $ret , $msg ) ; 
+	}
+	#eof sub doRunUpsertSql
 
    #
    # -----------------------------------------------------------------------------
