@@ -51,7 +51,7 @@ use XlsToRdbms::App::Controller::FileIOController ;
 my $module_trace                 = 1 ; 
 my $md_file 							= '' ; 
 my $rdbms_type 						= 'postgre' ; #todo: parametrize to 
-my $input_file                   = '' ; 
+my $xls_file                     = '' ; 
 my $objInitiator                 = {} ; 
 my $appConfig                    = {} ; 
 my $objLogger                    = {} ; 
@@ -73,11 +73,11 @@ my $actions                      = q{} ;
       doInitialize();	
 
       GetOptions(	
-         'input_file=s' => \$input_file
+         'xls-file=s' => \$xls_file
          , 'do=s'       => \$actions
       );
       
-      $appConfig->{ 'input_file' } = $input_file ; 
+      $appConfig->{ 'xls_file' } = $xls_file ; 
       $actions = 'file-to-db' unless ( $actions )  ; 
 
       my @actions = split /,/ , $actions ; 
@@ -87,20 +87,20 @@ my $actions                      = q{} ;
          $objLogger->doLogInfoMsg ( $msg ) ; 
 
          if ( $action eq 'file-to-db' ) {
-            $msg = 'input_file to parse : ' . "\n" . $input_file ; 
+            $msg = 'xls_file to parse : ' . "\n" . $xls_file ; 
             $objLogger->doLogInfoMsg ( "$msg" ) ; 
 
             my $objFileIOController = 
                'XlsToRdbms::App::Controller::FileIOController'->new ( \$appConfig ) ; 
-            ( $ret , $msg ) = $objFileIOController->doRunSomeAction ( $input_file ) ; 
+            ( $ret , $msg ) = $objFileIOController->doRunSomeAction ( $xls_file ) ; 
          } 
          elsif ( $action eq 'db-to-xls' ) {
-            $msg = 'input_file to parse : ' . "\n" . $input_file ; 
+            $msg = 'xls_file to parse : ' . "\n" . $xls_file ; 
             $objLogger->doLogInfoMsg ( "$msg" ) ; 
 
             my $objDbIOController = 
                'XlsToRdbms::App::Controller::DbIOController'->new ( \$appConfig ) ; 
-            ( $ret , $msg ) = $objDbIOController->doRunSomeAction ( $input_file ) ; 
+            ( $ret , $msg ) = $objDbIOController->doRunSomeAction ( $xls_file ) ; 
          } 
          else {
             $msg = "unknown $action action !!!" ; 
