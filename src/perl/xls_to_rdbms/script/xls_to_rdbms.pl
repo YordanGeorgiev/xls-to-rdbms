@@ -45,7 +45,6 @@ use XlsToRdbms::App::Utils::Initiator ;
 use XlsToRdbms::App::Utils::Configurator ; 
 use XlsToRdbms::App::Utils::Logger ; 
 use XlsToRdbms::App::Utils::IO::FileHandler ; 
-use XlsToRdbms::App::Controller::DbIOController ; 
 use XlsToRdbms::App::Controller::ControllerXlsToRdbms ; 
 
 my $module_trace                 = 1 ; 
@@ -59,7 +58,7 @@ my $objFileHandler               = {} ;
 my $msg                          = q{} ; 
 my $objConfigurator              = {} ; 
 my $actions                      = q{} ; 
-
+my $tables_list                  = q{} ; 
 
    #
    # the main shell entry point of the application
@@ -73,11 +72,14 @@ my $actions                      = q{} ;
       doInitialize();	
 
       GetOptions(	
-         'xls-file=s' => \$xls_file
-         , 'do=s'       => \$actions
+           'xls-file=s'       => \$xls_file
+         , 'do=s'             => \$actions
+         , 'tables=s'         => \$tables_list
       );
       
       $appConfig->{ 'xls_file' } = $xls_file ; 
+      $appConfig->{ 'tables_list' } = $tables_list ; 
+
       $actions = 'file-to-db' unless ( $actions )  ; 
 
       my @actions = split /,/ , $actions ; 
@@ -92,15 +94,11 @@ my $actions                      = q{} ;
 
             my $objControllerXlsToRdbms = 
                'XlsToRdbms::App::Controller::ControllerXlsToRdbms'->new ( \$appConfig ) ; 
-            ( $ret , $msg ) = $objControllerXlsToRdbms->doReadXlsFileToHashRefs2 ( $xls_file ) ; 
+            ( $ret , $msg ) = $objControllerXlsToRdbms->doReadXlsFileToHashRefs3 ( $xls_file ) ; 
          } 
          elsif ( $action eq 'db-to-xls' ) {
             $msg = 'xls_file to parse : ' . "\n" . $xls_file ; 
             $objLogger->doLogInfoMsg ( "$msg" ) ; 
-
-            my $objDbIOController = 
-               'XlsToRdbms::App::Controller::DbIOController'->new ( \$appConfig ) ; 
-            ( $ret , $msg ) = $objDbIOController->doRunSomeAction ( $xls_file ) ; 
          } 
          else {
             $msg = "unknown $action action !!!" ; 

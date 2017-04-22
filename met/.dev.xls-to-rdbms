@@ -11,11 +11,11 @@ src/perl/xls_to_rdbms/lib/XlsToRdbms
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Data/
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm
-src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/DbIOController.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/ETL
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO
+src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Timer.pm
