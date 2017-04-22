@@ -376,4 +376,11 @@ doc/xls
 doc/pdf
 doc/md
 1
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Controller/ControllerXlsToRdbms/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Configurator/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/IO/ExcelHandler/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/IO/FileHandler/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Initiator/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Logger/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Timer/autosplit.ix
 tags
