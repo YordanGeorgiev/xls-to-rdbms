@@ -334,6 +334,11 @@ package XlsToRdbms::App::Utils::Initiator ;
 
 		# set the default ConfFile path if no cmd argument is provided
 		$ConfFile = "$ProductInstanceDir/cnf/$ProductName.$HostName.cnf" ; 
+		my $EnvConfFile = "$ProductInstanceDir/cnf/$ProductName.$ProductType.$HostName.cnf" ; 
+
+      if ( -f "$EnvConfFile" ) {
+		   $ConfFile = $EnvConfFile ; 
+      }
 
 		$self->set('ConfFile' , $ConfFile) ; 
 		$appConfig->{'ConfFile'} 	= $ConfFile ; 

@@ -25,7 +25,7 @@ DbType 	=         mariadb
 LogFile=%LogDir%/%ProductName%.%YYYY%.%MM%.%DD%.log
 
 # OBS ! dev , tst , prd product instances to own db !
-db_name   = %ProductType%_xls_to_rdbms
+db_name   = dev_ysg_issues
 
 # the mariadb user name
 db_user = ysg
