@@ -16,7 +16,7 @@ doRunXlsToRdbms(){
    xls_file='/vagrant/csitea/issue-tracker/doc/txt/issues/2017/2017-04/2017-04-22/issue-tracker.issues.2017-04-22.daily.200617.xlsx'
    
    # Action ... !!!
-   perl src/perl/xls_to_rdbms/script/xls_to_rdbms.pl --do db-to-xls --xls-file $xls_file
+   perl src/perl/xls_to_rdbms/script/xls_to_rdbms.pl --do xls-to-db --xls-file $xls_file
    exit_code=$?
    doLog "INFO doRunXlsToRdbms exit_code $exit_code"
    test $exit_code -ne 0 && doExit $exit_code "failed to run xls_to_rdbms.pl"  

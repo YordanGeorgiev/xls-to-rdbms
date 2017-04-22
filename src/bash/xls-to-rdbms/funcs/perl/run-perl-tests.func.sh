@@ -17,7 +17,7 @@ doRunPerlTests(){
 	test -z "$sleep_iterval" || sleep $sleep_iterval
 	
 	doLog "INFO Component testing Logger.pm with TestLogger "
-	perl src/perl/xls_to_rdbms/t/TestFileIOController.pl
+	perl src/perl/xls_to_rdbms/t/TestControllerXlsToRdbms.pl
 	test -z "$sleep_iterval" || sleep $sleep_iterval
 	doLog "INFO STOP  : doRunPerlTests"
 }

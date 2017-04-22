@@ -8,7 +8,7 @@ use Data::Printer ;
 
 use XlsToRdbms::App::Utils::Initiator ; 
 use XlsToRdbms::App::Utils::Logger ; 
-use XlsToRdbms::App::Controller::FileIOController ; 
+use XlsToRdbms::App::Controller::ControllerXlsToRdbms ; 
 
 my $objInitiator 				= 'XlsToRdbms::App::Utils::Initiator'->new();	
 my $appConfig					= {} ;
@@ -32,16 +32,16 @@ my $input_file            = $ProductInstanceDir . "/non/existent/file.txt" ;
 my $ret                    = 0 ; 
 my $msg                    = {} ; 
 
-my $objFileIOController = 
-   'XlsToRdbms::App::Controller::FileIOController'->new ( \$appConfig ) ; 
+my $objControllerXlsToRdbms = 
+   'XlsToRdbms::App::Controller::ControllerXlsToRdbms'->new ( \$appConfig ) ; 
 
-isa_ok($objFileIOController, "XlsToRdbms::App::Controller::FileIOController");
+isa_ok($objControllerXlsToRdbms, "XlsToRdbms::App::Controller::ControllerXlsToRdbms");
 $test_counter++ ; 
 
-can_ok($objFileIOController, $_) for qw(doLoadIssuesFileToDb);
+can_ok($objControllerXlsToRdbms, $_) for qw(doLoadIssuesFileToDb);
 $test_counter++ ; 
 
-( $ret , $msg )            = $objFileIOController->doLoadIssuesFileToDb ( $input_file ) ; 
+( $ret , $msg )            = $objControllerXlsToRdbms->doLoadIssuesFileToDb ( $input_file ) ; 
 
 ok ( $ret eq 1 ) 
 

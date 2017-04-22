@@ -12,7 +12,7 @@ src/perl/xls_to_rdbms/lib
 src/perl/xls_to_rdbms/lib/XlsToRdbms
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Data/
-src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/FileIOController.pm
+src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/DbIOController.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/ETL
@@ -52,7 +52,7 @@ src/bash/xls-to-rdbms/helps/perl/run-perl-tests.help.sh
 src/bash/xls-to-rdbms/specs/perl/run-perl-tests.spec.sh
 src/bash/xls-to-rdbms/tests/perl/run-perl-tests.test.sh
 src/perl/xls_to_rdbms/t
-src/perl/xls_to_rdbms/t/TestFileIOController.pl
+src/perl/xls_to_rdbms/t/TestControllerXlsToRdbms.pl
 src/perl/xls_to_rdbms/t/TestInitiator.pm
 src/perl/xls_to_rdbms/t/TestLogger.pl
 src/bash/xls-to-rdbms/test-xls-to-rdbms.sh

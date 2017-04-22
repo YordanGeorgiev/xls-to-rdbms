@@ -46,7 +46,7 @@ use XlsToRdbms::App::Utils::Configurator ;
 use XlsToRdbms::App::Utils::Logger ; 
 use XlsToRdbms::App::Utils::IO::FileHandler ; 
 use XlsToRdbms::App::Controller::DbIOController ; 
-use XlsToRdbms::App::Controller::FileIOController ; 
+use XlsToRdbms::App::Controller::ControllerXlsToRdbms ; 
 
 my $module_trace                 = 1 ; 
 my $md_file 							= '' ; 
@@ -86,13 +86,13 @@ my $actions                      = q{} ;
          $msg = "running the $action action " ; 
          $objLogger->doLogInfoMsg ( $msg ) ; 
 
-         if ( $action eq 'file-to-db' ) {
+         if ( $action eq 'xls-to-db' ) {
             $msg = 'xls_file to parse : ' . "\n" . $xls_file ; 
             $objLogger->doLogInfoMsg ( "$msg" ) ; 
 
-            my $objFileIOController = 
-               'XlsToRdbms::App::Controller::FileIOController'->new ( \$appConfig ) ; 
-            ( $ret , $msg ) = $objFileIOController->doRunSomeAction ( $xls_file ) ; 
+            my $objControllerXlsToRdbms = 
+               'XlsToRdbms::App::Controller::ControllerXlsToRdbms'->new ( \$appConfig ) ; 
+            ( $ret , $msg ) = $objControllerXlsToRdbms->doReadXlsFileToHashRefs2 ( $xls_file ) ; 
          } 
          elsif ( $action eq 'db-to-xls' ) {
             $msg = 'xls_file to parse : ' . "\n" . $xls_file ; 

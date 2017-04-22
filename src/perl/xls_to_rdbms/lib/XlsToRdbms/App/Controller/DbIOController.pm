@@ -47,8 +47,7 @@ package XlsToRdbms::App::Controller::DbIOController ;
 	# -----------------------------------------------------------------------------
 	START SUBS 
 =cut
-
-
+   
    # 
 	# -----------------------------------------------------------------------------
    # read the passed issue file , convert it to hash ref of hash refs 

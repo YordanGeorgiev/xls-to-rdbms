@@ -1,4 +1,4 @@
-package XlsToRdbms::App::Controller::FileIOController ; 
+package XlsToRdbms::App::Controller::ControllerXlsToRdbms ; 
 
 	use strict; use warnings; use utf8 ; 
 
@@ -31,9 +31,9 @@ package XlsToRdbms::App::Controller::FileIOController ;
    our $rdbms_type                  = 'postgre' ; 
 
 =head1 SYNOPSIS
-      my $objFileIOController = 
-         'XlsToRdbms::App::Controller::FileIOController'->new ( \$appConfig ) ; 
-      ( $ret , $msg ) = $objFileIOController->doLoadIssuesFileToDb ( $input_file ) ; 
+      my $objControllerXlsToRdbms = 
+         'XlsToRdbms::App::Controller::ControllerXlsToRdbms'->new ( \$appConfig ) ; 
+      ( $ret , $msg ) = $objControllerXlsToRdbms->doLoadIssuesFileToDb ( $input_file ) ; 
 =cut 
 
 =head1 EXPORT
@@ -49,20 +49,28 @@ package XlsToRdbms::App::Controller::FileIOController ;
 =cut
 
 
+
+
    # 
 	# -----------------------------------------------------------------------------
    # read the passed issue file , convert it to hash ref of hash refs 
    # and insert the hsr into a db
 	# -----------------------------------------------------------------------------
-   sub doRunSomeAction {
+   sub doReadXlsFileToHashRefs2 {
       my $self = shift ; 
 
-      print 'START doRunSomeAction' . "\n" ; 
-      print 'STOP  doRunSomeAction' . "\n" ; 
+      my $ret = 0; 
+      my $msg = 'file read' ; 
+      my $hsr2 = {} ;      # a hash ref of hash refs 
 
+      # instantiate the XlsHandler
+      # read the xls into hash ref of hash ref
+
+      print 'START doReadXlsFileToHashRefs2' . "\n" ; 
+      print 'STOP  doReadXlsFileToHashRefs2' . "\n" ; 
+      
+      return ( $ret , $msg ) ; 
    } 
-
-
 
 	#
 	# --------------------------------------------------------
