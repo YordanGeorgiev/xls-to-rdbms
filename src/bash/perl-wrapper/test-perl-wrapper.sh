@@ -107,8 +107,8 @@ doRunTests(){
 #------------------------------------------------------------------------------
 doInit(){
    call_start_dir=`pwd`
-   wrap_bash_dir=$(perl -e 'use File::Basename; use Cwd "abs_path"; print dirname(abs_path(@ARGV[0]));' -- "$0")
-   tmp_dir="$wrap_bash_dir/tmp/.tmp.$$"
+   run_unit_bash_dir=$(perl -e 'use File::Basename; use Cwd "abs_path"; print dirname(abs_path(@ARGV[0]));' -- "$0")
+   tmp_dir="$run_unit_bash_dir/tmp/.tmp.$$"
    mkdir -p "$tmp_dir"
    ( set -o posix ; set ) | sort >"$tmp_dir/vars.before"
    my_name_ext=`basename $0`
@@ -195,7 +195,7 @@ doCleanAfterRun(){
 
 #   while read -r f ; do 
 #      test -f $f && rm -fv "$f" ; 
-#   done < <(find "$wrap_bash_dir" -type f -name '*.bak')
+#   done < <(find "$run_unit_bash_dir" -type f -name '*.bak')
 }
 #eof func doCleanAfterRun
 
@@ -250,7 +250,7 @@ doRunCmdOrExit(){
 #------------------------------------------------------------------------------
 doSetVars(){
 	test -z "$sleep_interval" && export sleep_iterval=3
-   cd $wrap_bash_dir
+   cd $run_unit_bash_dir
    for i in {1..3} ; do cd .. ; done ;
    export product_instance_dir=`pwd`;
    
@@ -284,7 +284,7 @@ doSetVars(){
 	cd ..
 	org_base_dir=`pwd`;
 
-	cd "$wrap_bash_dir/"
+	cd "$run_unit_bash_dir/"
 
    # start settiing default vars
    do_print_debug_msgs=0
@@ -320,11 +320,11 @@ doSetVars(){
 #------------------------------------------------------------------------------
 doParseConfFile(){
 	# set a default cnfiguration file
-	cnf_file="$wrap_bash_dir/$run_unit_tester.cnf"
+	cnf_file="$run_unit_bash_dir/$run_unit_tester.cnf"
 
 	# however if there is a host dependant cnf file override it
-	test -f "$wrap_bash_dir/$run_unit_tester.$host_name.cnf" \
-		&& cnf_file="$wrap_bash_dir/$run_unit_tester.$host_name.cnf"
+	test -f "$run_unit_bash_dir/$run_unit_tester.$host_name.cnf" \
+		&& cnf_file="$run_unit_bash_dir/$run_unit_tester.$host_name.cnf"
 	
 	# if we have perl apps they will share the same cnfiguration settings with this one
 	test -f "$product_instance_dir/$run_unit_tester.$host_name.cnf" \
