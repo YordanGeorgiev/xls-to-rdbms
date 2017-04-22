@@ -78,8 +78,6 @@ package XlsToRdbms::App::Controller::ControllerXlsToRdbms ;
       ( $ret , $msg , $hsr3->{ $db_name } ) = $objExcelHandler->doReadXlsFileToHsr2( $xls_file ) ; 
       # read the xls into hash ref of hash ref
 
-      print 'START doReadXlsFileToHashRefs3' . "\n" ; 
-      print 'STOP  doReadXlsFileToHashRefs3' . "\n" ; 
       
       p($hsr3->{ $db_name });
  

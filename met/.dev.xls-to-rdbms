@@ -10,6 +10,9 @@ src/perl/xls_to_rdbms/lib
 src/perl/xls_to_rdbms/lib/XlsToRdbms
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Data/
+src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/
+src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/DbHandlerFactory.pm
+src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/ETL
