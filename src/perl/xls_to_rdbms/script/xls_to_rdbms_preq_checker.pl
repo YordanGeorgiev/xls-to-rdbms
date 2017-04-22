@@ -51,6 +51,8 @@ use ExtUtils::Installed;
 			File::Copy
 			File::Find
 			File::Path
+         Text::Iconv
+         Excel::Writer::XLSX
 		);
 
 		for(@modules) {

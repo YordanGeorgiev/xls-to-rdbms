@@ -11,11 +11,11 @@ src/perl/xls_to_rdbms/lib/XlsToRdbms
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Data/
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm
-src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/DbIOController.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/ETL
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO
+src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm
 src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Timer.pm
@@ -376,4 +376,11 @@ doc/xls
 doc/pdf
 doc/md
 1
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Controller/ControllerXlsToRdbms/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Configurator/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/IO/ExcelHandler/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/IO/FileHandler/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Initiator/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Logger/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Timer/autosplit.ix
 tags
