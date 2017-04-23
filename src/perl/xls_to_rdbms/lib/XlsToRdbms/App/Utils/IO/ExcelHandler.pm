@@ -36,43 +36,40 @@ package XlsToRdbms::App::Utils::IO::ExcelHandler ;
       my $xls_file      = shift ; 
 
       my $ret = 1 ; 
- 
-		my $msg = "ExcelToMariaDbLoader::doParseXlsSheet:: 
-							opening the \$xls_file:: $xls_file" ; 
+		my $msg = "open the xls_file: $xls_file" ; 
 		$objLogger->doLogDebugMsg( $msg ) ; 
 
-		my $objXlsParser= 'Spreadsheet::ParseExcel'->new();
-		my $objWorkbook = $objXlsParser->Parse( $xls_file );
-		my $hsr2 = {} ; 
+		my $objXlsParser     = 'Spreadsheet::ParseExcel'->new();
+		my $objWorkbook      = $objXlsParser->Parse( $xls_file );
+		my $hsr2        = {} ;      # this is the data hash ref of hash refs
 
 		# check if we are using Excel2007 open xml format 
       if ( !defined $objWorkbook ) {
 				  
-         #works 
-         #my $objConverter = () ; 
+         # works too my $objConverter = () ; 
          #"utf-8", "windows-1251"
-         my $objConverter = Text::Iconv -> new ( "utf-8" , "utf-8" );  
-         $objWorkbook = Spreadsheet::XLSX -> new ($xls_file, $objConverter);
+         my $objConverter  = Text::Iconv -> new ( "utf-8" , "utf-8" );  
+         $objWorkbook      = Spreadsheet::XLSX -> new ($xls_file, $objConverter);
 
          # exit the whole application if there is no excel defined 
          if ( !defined $objWorkbook ) {
-            my $error_msg = "cannot parse \$xls_file $xls_file $! $objXlsParser->error()" ; 
-            $objLogger->doLogErrorMsg (  "$error_msg" ) ; 
-            die $objXlsParser->error(), ".\n\n\n\n"; 
+            $msg = "cannot parse \$xls_file $xls_file $! $objXlsParser->error()" ; 
+            $objLogger->doLogErrorMsg (  "$msg" ) ; 
+            return ( $ret , $msg , {} ); 
          } 
 				  
 	   } #eof if not $objWorkbook
-		
+	
+	
       foreach my $worksheet ( @{ $objWorkbook->{ Worksheet } } ) {
 
-			my $hsWorkSheet = () ; 
-         my $FileName = ();
-         $objLogger->doLogDebugMsg( "foreach my worksheet " )
+			my $hsWorkSheet         = {} ; 
+         my $WorkSheetName       = $worksheet->{ 'Name' };
+         $objLogger->doLogDebugMsg( "foreach my worksheet: " . $WorkSheetName )
            if ( $module_trace == 1 );
-         my $WorkSheetName = $worksheet->{ 'Name' };
+         
 			my $RowMin = $worksheet->{'MinRow'};
          my $RowMax = $worksheet->{'MaxRow'};
-			my $hsHeaders = {} ; 
 			
          #    my ( $RowMin, $RowMax) = $worksheet->row_range();
          #    my ( $MinCol, $MaxCold ) = $worksheet->col_range();
@@ -80,9 +77,9 @@ package XlsToRdbms::App::Utils::IO::ExcelHandler ;
 			my $row_num = 0 ; 
          for my $row ( ( $RowMin ) .. $RowMax ) {
 
-				my $hsRow  = {} ; 
-            my $MinCol = $worksheet->{'MinCol'};
-            my $MaxCol = $worksheet->{'MaxCol'};
+				my $hsRow      = {} ; 
+            my $MinCol     = $worksheet->{'MinCol'};
+            my $MaxCol     = $worksheet->{'MaxCol'};
 				#debug print "MinCol::$MinCol , MaxCol::$MaxCol \n" ; 
            	my $col_num = 0 ;  
 
@@ -105,16 +102,7 @@ package XlsToRdbms::App::Utils::IO::ExcelHandler ;
 						# debug print "token is :: " . $token . "\n" ; 
                }
 
-					if ( $row_num == 0 ) {
-						#populate the header row
-						$hsHeaders->{"$col_num"} = $token; 
-						$hsRow = $hsHeaders ; 
-					}
-					else {
-						#populate the data rows 
-						my $ColumnName	= $hsHeaders->{"$col_num"} ; 	
-				 		$hsRow->{ "$ColumnName" } = $token ; 			
-					}
+				 	$hsRow->{ $col_num } = $token ; 			
 					$col_num++ ; 
 				}
 				#eof for col
@@ -122,16 +110,15 @@ package XlsToRdbms::App::Utils::IO::ExcelHandler ;
 				$row_num++ ; 
 			}
 			#eof foreach row
-			#doPrintInsertTable ( $WorkSheetName , $hsWorkSheet ) ; 
+			
 			$hsr2->{"$WorkSheetName" } = $hsWorkSheet ; 
 			# p($hsWorkSheet );
 		} 
 
-		#eof foreach my worksheet
-		# Action !!! for each hsWorkSheet
       $ret = 0 ; 
       $msg = 'xls file parse OK' ; 
 		return ( $ret , $msg , $hsr2 ) ; 
+
 	}
 	#eof sub doXlsToHashOfHashes
 

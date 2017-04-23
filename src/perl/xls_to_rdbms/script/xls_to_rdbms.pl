@@ -94,7 +94,7 @@ my $tables_list                  = q{} ;
 
             my $objControllerXlsToRdbms = 
                'XlsToRdbms::App::Controller::ControllerXlsToRdbms'->new ( \$appConfig ) ; 
-            ( $ret , $msg ) = $objControllerXlsToRdbms->doReadXlsFileToHashRefs3 ( $xls_file ) ; 
+            ( $ret , $msg ) = $objControllerXlsToRdbms->doReadXlsFileToHashRefs2 ( $xls_file ) ; 
          } 
          elsif ( $action eq 'db-to-xls' ) {
             $msg = 'xls_file to parse : ' . "\n" . $xls_file ; 

@@ -2,7 +2,7 @@ package XlsToRdbms::App::Controller::ControllerXlsToRdbms ;
 
 	use strict; use warnings; use utf8 ; 
 
-	my $VERSION = '1.0.0';    
+	my $VERSION = '1.1.0';    
 
 	require Exporter;
 	our @ISA = qw(Exporter);
@@ -33,7 +33,7 @@ package XlsToRdbms::App::Controller::ControllerXlsToRdbms ;
 =head1 SYNOPSIS
       my $objControllerXlsToRdbms = 
          'XlsToRdbms::App::Controller::ControllerXlsToRdbms'->new ( \$appConfig ) ; 
-      ( $ret , $msg ) = $objControllerXlsToRdbms->doReadXlsFileToHashRefs3 ( $input_file ) ; 
+      ( $ret , $msg ) = $objControllerXlsToRdbms->doReadXlsFileToHashRefs2 ( $input_file ) ; 
 =cut 
 
 =head1 EXPORT
@@ -56,30 +56,23 @@ package XlsToRdbms::App::Controller::ControllerXlsToRdbms ;
    # read the passed issue file , convert it to hash ref of hash refs 
    # and insert the hsr into a db
 	# -----------------------------------------------------------------------------
-   sub doReadXlsFileToHashRefs3 {
+   sub doReadXlsFileToHashRefs2 {
 
-      my $self          = shift ; 
-      my $xls_file      = shift ; 
-      my $tables_list   = shift ; 
+      my $self             = shift ; 
+      my $xls_file         = shift ; 
+      my $tables_list      = shift ; 
 
-      my $ret = 0; 
-      my $msg = 'file read' ; 
+      my $ret              = 0; 
+      my $msg              = 'file read' ; 
 
-      my $hsr3_meta = {} ;      
-      $hsr3_meta->{ 0 } = 'db_name' ; 
-      my $db_name       = $appConfig->{ 'db_name' } ;  
-
-      # a hash ref of hash refs ( sheet level ) of hash refs ( column level )
-      my $hsr3 = {} ;      
-      $hsr3->{ $db_name } = {} ; 
-
-      # instantiate the XlsHandler
-	   my $objExcelHandler 	   = 'XlsToRdbms::App::Utils::IO::ExcelHandler'->new ( \$appConfig ) ; 
-      ( $ret , $msg , $hsr3->{ $db_name } ) = $objExcelHandler->doReadXlsFileToHsr2( $xls_file ) ; 
-      # read the xls into hash ref of hash ref
-
+      my $hsr2             = {} ;      
+	   my $objExcelHandler  = 'XlsToRdbms::App::Utils::IO::ExcelHandler'->new ( \$appConfig ) ; 
       
-      p($hsr3->{ $db_name });
+      # read the xls into hash ref of hash ref
+      ( $ret , $msg , $hsr2 ) = 
+            $objExcelHandler->doReadXlsFileToHsr2 ( $xls_file ) ; 
+
+      p($hsr2);
  
       return ( $ret , $msg ) ; 
    } 

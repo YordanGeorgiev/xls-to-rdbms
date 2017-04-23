@@ -30,10 +30,10 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 	#  input: hash ref of hash refs containing the issues 
 	#  file data  and meta data 
    # ------------------------------------------------------
-	sub doHsr3ToDb {
+	sub doHsr2ToDb {
 
 		my $self 				= shift ; 
-		my $sql_hash 			= shift ; 	
+		my $hsr2 			   = shift ; 	# the hash ref of hash refs  aka hs r on power 2
       
       my $ret              = 1 ; 
       my $msg              = 'unknown error while sql insert ' ; 		
@@ -47,8 +47,8 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       $objLogger->doLogDebugMsg ( $debug_msg ) ; 
 	  
  
-		foreach my $key ( sort(keys( %{$sql_hash} ) ) ) {
-         my $row_hash = $sql_hash->{ $key } ; 
+		foreach my $key ( sort(keys( %{$hsr2} ) ) ) {
+         my $row_hash = $hsr2->{ $key } ; 
 
 		   foreach my $key ( sort(keys( %{$row_hash} ) ) ) {
             $str_col_list .= ' , ' . $key ; 
@@ -100,7 +100,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       
       return ( $ret , $msg ) ; 	
 	}
-	#eof sub doHsr3ToDb
+	#eof sub doHsr2ToDb
 
 	#
 	# -----------------------------------------------------------------------------
