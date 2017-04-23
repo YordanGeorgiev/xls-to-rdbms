@@ -72,9 +72,6 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 
       # proper authentication implementation src:
       # http://stackoverflow.com/a/19980156/65706
-      #
-      $debug_msg .= "\n db_name: $db_name \n db_host: $db_host " ; 
-      $debug_msg .= "\n db_user: $db_user \n db_user_pw $db_user_pw \n" ; 
       $objLogger->doLogDebugMsg ( $debug_msg ) ; 
      
       my $dbh = DBI->connect("DBI:Pg:dbname=$db_name", "", "" , {
@@ -116,11 +113,11 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 		my $hsr2 		      = shift ; 
 		my $ret 				   = 1 ; 
 		my $msg 				   = ' failed to connect during insert to db !!! ' ; 
-
-      my $sth              = {} ;         # this is the statement handle
-      my $dbh              = {} ;         # this is the database handle
-      my $str_sql          = q{} ;        # this is the sql string to use for the query
-      my $rv               = 0 ;          # apperantly insert ok returns rv = 1 !!! 
+		my $debug_msg 		   = ' failed to connect during insert to db !!! ' ; 
+      my $sth              = {} ;    # this is the statement handle
+      my $dbh              = {} ;    # this is the database handle
+      my $str_sql          = q{} ;   # this is the sql string to use for the query
+      my $rv               = 0 ;     # apperantly insert ok returns rv = 1 !!! 
 
       # obs this does not support ordered primary key tables first order yet !!!
       foreach my $table_name ( keys %$hsr2 ) { 
@@ -140,7 +137,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
             $objLogger->doLogErrorMsg ( $msg ) ; 
             return ( $ret , $msg ) ; 
          } else {
-            $msg = 'CONNECT OK' ; 
+            $msg = 'connect OK' ; 
             $objLogger->doLogDebugMsg ( $msg ) ; 
          }
 
@@ -149,14 +146,13 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
          $sql_str_insrt      .= '(' ; 
 
          foreach my $col_num ( sort ( keys %$hs_headers )) {
-
             my $column_name = $hs_headers->{ $col_num } ; 
             $sql_str_insrt .= " $column_name " . ' , ' ; 
          } 
          
          for (1..3) { chop ( $sql_str_insrt) } ; 
          $sql_str_insrt	.= ')' ; 
-        
+
          foreach my $row_num ( sort ( keys %$hs_table ) ) { 
 
             next if $row_num == 0 ; 
@@ -218,8 +214,8 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       my $table            = shift ;      # the table to get the data from  
       
       my $msg              = q{} ;         
+      my $debug_msg        = q{} ;         
       my $ret              = 1 ;          # this is the return value from this method 
-      my $debug_msg        = q{} ; 
       my $hsr              = {} ;         # this is hash ref of hash refs to populate with
       my $mhsr             = {} ;         # this is meta hash describing the data hash ^^
       my $sth              = {} ;         # this is the statement handle
@@ -232,10 +228,6 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       " ; 
 
       # authentication src: http://stackoverflow.com/a/19980156/65706
-      $debug_msg .= "\n db_name: $db_name \n db_host: $db_host " ; 
-      $debug_msg .= "\n db_user: $db_user \n db_user_pw $db_user_pw \n" ; 
-      $objLogger->doLogDebugMsg ( $debug_msg ) ; 
-     
       $dbh = DBI->connect("dbi:Pg:dbname=$db_name", "", "" , {
            'RaiseError' => 1
          , 'ShowErrorStatement' => 1

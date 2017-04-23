@@ -37,7 +37,7 @@ src/bash/xls-to-rdbms
 src/bash/xls-to-rdbms/funcs
 src/bash/xls-to-rdbms/funcs/%act%.%deliverable_type%.sh
 doc/txt/xls-to-rdbms/tmpl/%act%.%deliverable_type%.txt
-1
+#---
 doc/txt/xls-to-rdbms/funcs/perl/run-xls-to-rdbms.func.txt
 doc/txt/xls-to-rdbms/helps/perl/run-xls-to-rdbms.help.txt
 doc/txt/xls-to-rdbms/specs/perl/run-xls-to-rdbms.spec.txt
@@ -51,11 +51,11 @@ src/bash/xls-to-rdbms/xls-to-rdbms.cnf
 src/bash/xls-to-rdbms/xls-to-rdbms.doc-pub-host.cnf
 src/bash/xls-to-rdbms/xls-to-rdbms.set-your-host.cnf
 src/bash/xls-to-rdbms/xls-to-rdbms.CMac.cnf
-1
+#--
 src/sql/mysql/run/select-all-from-%db%.%table%.SQL
 src/sql/mysql/run/delete-all-from-%db%.%table%.SQL
 dat/lst/sql/mysql/run/db-table.list
-1
+# 1
 doc/txt/xls-to-rdbms/funcs/remove-package.func.txt
 doc/txt/xls-to-rdbms/helps/pckg/remove-package.help.txt
 doc/txt/xls-to-rdbms/specs/pckg/remove-package.spec.txt
@@ -68,7 +68,7 @@ src/bash/xls-to-rdbms/specs/pckg/remove-package.spec.sh
 src/bash/xls-to-rdbms/specs/remove-package.spec.sh
 src/bash/xls-to-rdbms/tests/pckg/remove-package.test.sh
 src/bash/xls-to-rdbms/tests/remove-package.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/create-ctags.func.txt
 doc/txt/xls-to-rdbms/helps/dev/create-ctags.help.txt
 doc/txt/xls-to-rdbms/specs/create-ctags.spec.txt
@@ -77,7 +77,7 @@ doc/txt/xls-to-rdbms/tests/create-ctags.test.txt
 src/bash/xls-to-rdbms/funcs/dev/create-ctags.func.sh
 src/bash/xls-to-rdbms/helps/create-ctags.help.sh
 src/bash/xls-to-rdbms/specs/create-ctags.spec.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/dev/morph-dir.func.txt
 doc/txt/xls-to-rdbms/specs/dev/morph-dir.spec.txt
 doc/txt/xls-to-rdbms/tests/dev/morph-dir.test.txt
@@ -86,7 +86,7 @@ src/bash/xls-to-rdbms/funcs/dev/morph-dir.func.sh
 src/bash/xls-to-rdbms/helps/dev/morph-dir.help.sh
 src/bash/xls-to-rdbms/specs/dev/morph-dir.spec.sh
 src/bash/xls-to-rdbms/tests/dev/morph-dir.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/tests/pckg/create-full-package.test.txt
 doc/txt/xls-to-rdbms/specs/pckg/create-full-package.spec.txt
 doc/txt/xls-to-rdbms/helps/pckg/create-full-package.help.txt
@@ -95,7 +95,7 @@ src/bash/xls-to-rdbms/specs/pckg/create-full-package.spec.sh
 src/bash/xls-to-rdbms/helps/pckg/create-full-package.help.sh
 src/bash/xls-to-rdbms/funcs/pckg/create-full-package.func.sh
 src/bash/xls-to-rdbms/tests/pckg/create-full-package.test.sh
-1
+#---
 src/bash/xls-to-rdbms/specs/pckg/create-full-7z-package.spec.sh
 src/bash/xls-to-rdbms/helps/pckg/create-full-7z-package.help.sh
 src/bash/xls-to-rdbms/funcs/pckg/create-full-7z-package.func.sh
@@ -104,7 +104,7 @@ doc/txt/xls-to-rdbms/tests/pckg/create-full-7z-package.test.txt
 doc/txt/xls-to-rdbms/specs/pckg/create-full-7z-package.spec.txt
 doc/txt/xls-to-rdbms/helps/pckg/create-full-7z-package.help.txt
 doc/txt/xls-to-rdbms/funcs/pckg/create-full-7z-package.func.txt
-1
+#---
 doc/txt/xls-to-rdbms/funcs/pckg/create-relative-7z-package.func.txt
 doc/txt/xls-to-rdbms/helps/pckg/create-relative-7z-package.help.txt
 doc/txt/xls-to-rdbms/specs/pckg/create-relative-7z-package.spec.txt
@@ -113,7 +113,7 @@ src/bash/xls-to-rdbms/funcs/pckg/create-relative-7z-package.func.sh
 src/bash/xls-to-rdbms/helps/pckg/create-relative-7z-package.help.sh
 src/bash/xls-to-rdbms/specs/pckg/create-relative-7z-package.spec.sh
 src/bash/xls-to-rdbms/tests/pckg/create-relative-7z-package.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/save-tmux-session.func.txt
 doc/txt/xls-to-rdbms/helps/sys/tmux/save-tmux-session.help.txt
 doc/txt/xls-to-rdbms/specs/save-tmux-session.spec.txt
@@ -123,7 +123,7 @@ src/bash/xls-to-rdbms/funcs/sys/tmux/save-tmux-session.func.sh
 src/bash/xls-to-rdbms/specs/save-tmux-session.spec.sh
 src/bash/xls-to-rdbms/tests/save-tmux-session.test.sh
 src/bash/xls-to-rdbms/tests/sys/tmux/save-tmux-session.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/restore-tmux-session.func.txt
 doc/txt/xls-to-rdbms/helps/sys/tmux/restore-tmux-session.help.txt
 doc/txt/xls-to-rdbms/specs/restore-tmux-session.spec.txt
@@ -134,7 +134,7 @@ src/bash/xls-to-rdbms/funcs/sys/tmux/restore-tmux-session.func.sh
 src/bash/xls-to-rdbms/helps/restore-tmux-session.help.sh
 src/bash/xls-to-rdbms/specs/sys/tmux/restore-tmux-session.spec.sh
 src/bash/xls-to-rdbms/tests/sys/tmux/restore-tmux-session.test.sh
-1
+#---
 src/bash/xls-to-rdbms/tests/sys/backup-file.test.sh
 src/bash/xls-to-rdbms/specs/sys/backup-file.spec.sh
 src/bash/xls-to-rdbms/funcs/sys/backup-file.func.sh
@@ -142,7 +142,7 @@ doc/txt/xls-to-rdbms/tests/sys/backup-file.test.txt
 doc/txt/xls-to-rdbms/specs/sys/backup-file.spec.txt
 doc/txt/xls-to-rdbms/helps/sys/backup-file.help.txt
 doc/txt/xls-to-rdbms/funcs/backup-file.func.txt
-1
+#---
 doc/txt/xls-to-rdbms/specs/pckg/create-relative-package.spec.txt
 doc/txt/xls-to-rdbms/tests/pckg/create-relative-package.test.txt
 doc/txt/xls-to-rdbms/funcs/pckg/create-relative-package.func.txt
@@ -160,7 +160,7 @@ doc/txt/xls-to-rdbms/helps/dev/clone-to-app.help.txt
 doc/txt/xls-to-rdbms/specs/dev/clone-to-app.spec.txt
 src/bash/xls-to-rdbms/funcs/dev/clone-to-app.func.sh
 src/bash/xls-to-rdbms/tests/dev/clone-to-app.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/change-version.func.txt
 doc/txt/xls-to-rdbms/helps/change-version.help.txt
 doc/txt/xls-to-rdbms/specs/change-version.spec.txt
@@ -169,7 +169,7 @@ src/bash/xls-to-rdbms/funcs/dev/change-version.func.sh
 src/bash/xls-to-rdbms/helps/change-version.help.sh
 src/bash/xls-to-rdbms/specs/change-version.spec.sh
 src/bash/xls-to-rdbms/tests/change-version.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/specs/change-env-type.spec.txt
 doc/txt/xls-to-rdbms/helps/change-env-type.help.txt
 doc/txt/xls-to-rdbms/funcs/change-env-type.func.txt
@@ -178,7 +178,7 @@ src/bash/xls-to-rdbms/specs/change-env-type.spec.sh
 src/bash/xls-to-rdbms/helps/change-env-type.help.sh
 src/bash/xls-to-rdbms/funcs/change-env-type.func.sh
 src/bash/xls-to-rdbms/tests/change-env-type.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/specs/remove-action-files.spec.txt
 doc/txt/xls-to-rdbms/helps/remove-action-files.help.txt
 doc/txt/xls-to-rdbms/funcs/remove-action-files.func.txt
@@ -187,7 +187,7 @@ src/bash/xls-to-rdbms/specs/remove-action-files.spec.sh
 src/bash/xls-to-rdbms/funcs/remove-action-files.func.sh
 src/bash/xls-to-rdbms/helps/remove-action-files.help.sh
 src/bash/xls-to-rdbms/tests/remove-action-files.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/tmux-common.func.txt
 doc/txt/xls-to-rdbms/helps/sys/tmux/tmux-common.help.txt
 doc/txt/xls-to-rdbms/specs/sys/tmux/tmux-common.spec.txt
@@ -198,7 +198,7 @@ src/bash/xls-to-rdbms/helps/tmux-common.help.sh
 src/bash/xls-to-rdbms/specs/sys/tmux-common.spec.sh
 src/bash/xls-to-rdbms/specs/sys/tmux/tmux-common.spec.sh
 src/bash/xls-to-rdbms/tests/tmux-common.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/print-help.func.txt
 doc/txt/xls-to-rdbms/helps/man/print-help.help.txt
 doc/txt/xls-to-rdbms/specs/man/print-help.spec.txt
@@ -207,7 +207,7 @@ src/bash/xls-to-rdbms/funcs/man/print-help.func.sh
 src/bash/xls-to-rdbms/helps/print-help.help.sh
 src/bash/xls-to-rdbms/specs/print-help.spec.sh
 src/bash/xls-to-rdbms/tests/print-help.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/print-usage.func.txt
 doc/txt/xls-to-rdbms/helps/man/print-usage.help.txt
 doc/txt/xls-to-rdbms/specs/man/print-usage.spec.txt
@@ -216,7 +216,7 @@ src/bash/xls-to-rdbms/funcs/man/print-usage.func.sh
 src/bash/xls-to-rdbms/helps/print-usage.help.sh
 src/bash/xls-to-rdbms/specs/print-usage.spec.sh
 src/bash/xls-to-rdbms/tests/print-usage.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/generate-action-files.func.txt
 doc/txt/xls-to-rdbms/helps/generate-action-files.help.txt
 doc/txt/xls-to-rdbms/specs/generate-action-files.spec.txt
@@ -225,11 +225,11 @@ src/bash/xls-to-rdbms/funcs/dev/generate-action-files.func.sh
 src/bash/xls-to-rdbms/helps/generate-action-files.help.sh
 src/bash/xls-to-rdbms/specs/generate-action-files.spec.sh
 src/bash/xls-to-rdbms/tests/generate-action-files.test.sh
-1
+#---
 doc/pdf
 doc/pdf/README.pdf
 doc/md
-1
+#---
 doc/txt/xls-to-rdbms/funcs/generate-sql.func.txt
 doc/txt/xls-to-rdbms/helps/generate-sql.help.txt
 doc/txt/xls-to-rdbms/specs/generate-sql.spec.txt
@@ -238,7 +238,7 @@ src/bash/xls-to-rdbms/funcs/generate-sql.func.sh
 src/bash/xls-to-rdbms/helps/generate-sql.help.sh
 src/bash/xls-to-rdbms/specs/generate-sql.spec.sh
 src/bash/xls-to-rdbms/tests/generate-sql.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/pckg/gmail-package.func.txt
 doc/txt/xls-to-rdbms/helps/pckg/gmail-package.help.txt
 doc/txt/xls-to-rdbms/specs/pckg/gmail-package.spec.txt
@@ -247,7 +247,7 @@ src/bash/xls-to-rdbms/helps/pckg/gmail-package.help.sh
 src/bash/xls-to-rdbms/specs/pckg/gmail-package.spec.sh
 src/bash/xls-to-rdbms/funcs/pckg/gmail-package.func.sh
 src/bash/xls-to-rdbms/tests/pckg/gmail-package.test.sh
-1
+#---
 cnf
 cnf/hosts
 cnf/hosts/doc-pub-host
@@ -265,7 +265,7 @@ bin/readme.txt
 dat/readme.txt
 cnf/readme.txt
 src/readme.txt
-1
+#---
 doc/txt/xls-to-rdbms/specs/log-test-run-entry.spec.txt
 doc/txt/xls-to-rdbms/funcs/log-test-run-entry.func.txt
 doc/txt/xls-to-rdbms/tests/log-test-run-entry.test.txt
@@ -275,13 +275,12 @@ src/bash/xls-to-rdbms/funcs/log-test-run-entry.func.sh
 src/bash/xls-to-rdbms/tests/log-test-run-entry.test.sh
 src/bash/xls-to-rdbms/helps/log-test-run-entry.help.sh
 dat/tests/1
-1
+#---
 tags
-# perl_ignore_file_pattern=.*\.swp$|.*\.log|$.*\.swo$
 src/bash/xls-to-rdbms/tests/run-xls-to-rdbms-tests.lst
 src/bash/xls-to-rdbms/tests/all-xls-to-rdbms-tests.lst
 src/bash/xls-to-rdbms/tests/rem-xls-to-rdbms-actions.lst
-1
+#---
 doc/txt/xls-to-rdbms/funcs/perl/check-perl-syntax.func.txt
 doc/txt/xls-to-rdbms/helps/perl/check-perl-syntax.help.txt
 doc/txt/xls-to-rdbms/specs/perl/check-perl-syntax.spec.txt
@@ -317,17 +316,17 @@ src/bash/xls-to-rdbms/xls-to-rdbms.cnf
 src/bash/xls-to-rdbms/xls-to-rdbms.doc-pub-host.cnf
 src/bash/xls-to-rdbms/xls-to-rdbms.set-your-host.cnf
 src/bash/xls-to-rdbms/xls-to-rdbms.CMac.cnf
-1
+#---
 src/sql/mysql/run/select-all-from-%db%.%table%.SQL
 src/sql/mysql/run/delete-all-from-%db%.%table%.SQL
 dat/lst/sql/mysql/run/db-table.list
-1
+#---
 met
 met/.inc.xls-to-rdbms
-1
+#---
 doc/pdf
 doc/md
-1
+#---
 doc/txt/xls-to-rdbms/funcs/generate-sql.func.txt
 doc/txt/xls-to-rdbms/helps/generate-sql.help.txt
 doc/txt/xls-to-rdbms/specs/generate-sql.spec.txt
@@ -336,7 +335,7 @@ src/bash/xls-to-rdbms/funcs/generate-sql.func.sh
 src/bash/xls-to-rdbms/helps/generate-sql.help.sh
 src/bash/xls-to-rdbms/specs/generate-sql.spec.sh
 src/bash/xls-to-rdbms/tests/generate-sql.test.sh
-1
+#---
 doc/txt/xls-to-rdbms/funcs/pckg/gmail-package.func.txt
 doc/txt/xls-to-rdbms/helps/pckg/gmail-package.help.txt
 doc/txt/xls-to-rdbms/specs/pckg/gmail-package.spec.txt
@@ -345,7 +344,7 @@ src/bash/xls-to-rdbms/helps/pckg/gmail-package.help.sh
 src/bash/xls-to-rdbms/specs/pckg/gmail-package.spec.sh
 src/bash/xls-to-rdbms/funcs/pckg/gmail-package.func.sh
 src/bash/xls-to-rdbms/tests/pckg/gmail-package.test.sh
-1
+#---
 cnf
 cnf/hosts
 cnf/hosts/doc-pub-host
@@ -365,20 +364,12 @@ bin/readme.txt
 dat/readme.txt
 cnf/readme.txt
 src/readme.txt
-1
-doc/txt/xls-to-rdbms/specs/log-test-run-entry.spec.txt
-doc/txt/xls-to-rdbms/funcs/log-test-run-entry.func.txt
-doc/txt/xls-to-rdbms/tests/log-test-run-entry.test.txt
-doc/txt/xls-to-rdbms/helps/log-test-run-entry.help.txt
-src/bash/xls-to-rdbms/specs/log-test-run-entry.spec.sh
-src/bash/xls-to-rdbms/funcs/log-test-run-entry.func.sh
-src/bash/xls-to-rdbms/tests/log-test-run-entry.test.sh
-src/bash/xls-to-rdbms/helps/log-test-run-entry.help.sh
+#---
 dat/tests/1
 doc/xls
 doc/pdf
 doc/md
-1
+#---
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Controller/ControllerXlsToRdbms/autosplit.ix
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Configurator/autosplit.ix
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/IO/ExcelHandler/autosplit.ix
@@ -386,4 +377,5 @@ src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/IO/FileHandler/autosplit.ix
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Initiator/autosplit.ix
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Logger/autosplit.ix
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Timer/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Model/PostGreDbHandler/autosplit.ix
 tags

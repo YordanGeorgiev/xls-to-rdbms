@@ -365,14 +365,6 @@ dat/readme.txt
 cnf/readme.txt
 src/readme.txt
 #---
-doc/txt/xls-to-rdbms/specs/log-test-run-entry.spec.txt
-doc/txt/xls-to-rdbms/funcs/log-test-run-entry.func.txt
-doc/txt/xls-to-rdbms/tests/log-test-run-entry.test.txt
-doc/txt/xls-to-rdbms/helps/log-test-run-entry.help.txt
-src/bash/xls-to-rdbms/specs/log-test-run-entry.spec.sh
-src/bash/xls-to-rdbms/funcs/log-test-run-entry.func.sh
-src/bash/xls-to-rdbms/tests/log-test-run-entry.test.sh
-src/bash/xls-to-rdbms/helps/log-test-run-entry.help.sh
 dat/tests/1
 doc/xls
 doc/pdf
@@ -385,4 +377,5 @@ src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/IO/FileHandler/autosplit.ix
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Initiator/autosplit.ix
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Logger/autosplit.ix
 src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Utils/Timer/autosplit.ix
+src/perl/xls_to_rdbms/lib/auto/XlsToRdbms/App/Model/PostGreDbHandler/autosplit.ix
 tags
