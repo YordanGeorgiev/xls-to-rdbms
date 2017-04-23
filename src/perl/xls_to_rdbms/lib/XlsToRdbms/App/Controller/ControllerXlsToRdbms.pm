@@ -13,8 +13,10 @@ package XlsToRdbms::App::Controller::ControllerXlsToRdbms ;
 
    use XlsToRdbms::App::Utils::Logger ; 
    use XlsToRdbms::App::Utils::IO::ExcelHandler ; 
+   use XlsToRdbms::App::Model::DbHandlerFactory ; 
 	
 	our $module_trace                = 0 ; 
+   our $hsr2                        = {} ;      
 	our $appConfig						   = {} ; 
 	our $RunDir 						   = '' ; 
 	our $ProductBaseDir 				   = '' ; 
@@ -65,18 +67,38 @@ package XlsToRdbms::App::Controller::ControllerXlsToRdbms ;
       my $ret              = 0; 
       my $msg              = 'file read' ; 
 
-      my $hsr2             = {} ;      
 	   my $objExcelHandler  = 'XlsToRdbms::App::Utils::IO::ExcelHandler'->new ( \$appConfig ) ; 
       
       # read the xls into hash ref of hash ref
       ( $ret , $msg , $hsr2 ) = 
             $objExcelHandler->doReadXlsFileToHsr2 ( $xls_file ) ; 
 
-      p($hsr2);
  
       return ( $ret , $msg ) ; 
    } 
 
+
+   # 
+	# -----------------------------------------------------------------------------
+   # read the passed issue file , convert it to hash ref of hash refs 
+   # and insert the hsr into a db
+	# -----------------------------------------------------------------------------
+   sub doInsertDbTables {
+
+      my $self                = shift ; 
+      my $ret                 = 1 ; 
+      my $msg                 = 'unknown error while inserting db tables !!!' ; 
+      my $rdbms_type          = $appConfig->{ 'rdbms_type' } || 'postgre' ; 
+
+	   my $objExcelHandler     = 'XlsToRdbms::App::Utils::IO::ExcelHandler'->new ( \$appConfig ) ; 
+      
+      my $objDbHandlerFactory = 'XlsToRdbms::App::Model::DbHandlerFactory'->new( \$appConfig , $self ) ; 
+      my $objDbHandler 		   = $objDbHandlerFactory->doInstantiate ( "$rdbms_type" );
+
+      p($hsr2);
+      ( $ret , $msg )         = $objDbHandler->doInsertDbTablesWithHsr2( $hsr2 ) ; 
+      return ( $ret , $msg ) ; 
+   } 
 
 	#
 	# --------------------------------------------------------

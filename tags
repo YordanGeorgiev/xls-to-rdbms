@@ -4,14 +4,14 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-AUTOLOAD	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	133;"	subroutine	language:Perl
+AUTOLOAD	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	154;"	subroutine	language:Perl
 AUTOLOAD	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	414;"	subroutine	language:Perl
 AUTOLOAD	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	211;"	subroutine	language:Perl
 AUTOLOAD	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm	391;"	subroutine	language:Perl
 AUTOLOAD	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm	74;"	subroutine	language:Perl
 AUTOLOAD	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Timer.pm	45;"	subroutine	language:Perl
 BuildMsg	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm	559;"	subroutine	language:Perl
-DESTROY	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	205;"	subroutine	language:Perl
+DESTROY	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	226;"	subroutine	language:Perl
 DESTROY	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	430;"	subroutine	language:Perl
 DESTROY	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	269;"	subroutine	language:Perl
 DESTROY	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm	463;"	subroutine	language:Perl
@@ -33,7 +33,7 @@ MkDir	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm	746;"	subroutine	
 PrintToFile	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	78;"	subroutine	language:Perl
 ReadFileReturnArrayRef	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	160;"	subroutine	language:Perl
 ReadFileReturnString	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	32;"	subroutine	language:Perl
-RunBeforeExit	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	193;"	subroutine	language:Perl
+RunBeforeExit	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	214;"	subroutine	language:Perl
 RunBeforeExit	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm	451;"	subroutine	language:Perl
 RunBeforeExit	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm	131;"	subroutine	language:Perl
 SetAllIniVarsToEnvironmentVars	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	344;"	subroutine	language:Perl
@@ -48,11 +48,11 @@ XlsToRdbms::App::Utils::Logger	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Lo
 XlsToRdbms::App::Utils::Timer	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Timer.pm	1;"	package	language:Perl
 add_window	src/bash/xls-to-rdbms/funcs/sys/tmux/tmux-common.func.sh	27;"	function	language:Sh
 add_window	src/bash/xls-to-rdbms/specs/sys/tmux/tmux-common.spec.sh	27;"	function	language:Sh
-autofit_columns	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	244;"	subroutine	language:Perl
+autofit_columns	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	231;"	subroutine	language:Perl
 clone	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	89;"	subroutine	language:Perl
 doAppendToFile	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm	683;"	subroutine	language:Perl
 doBackupFile	src/bash/xls-to-rdbms/funcs/sys/backup-file.func.sh	9;"	function	language:Sh
-doBuildXlsFromHashRef	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	146;"	subroutine	language:Perl
+doBuildXlsFromHashRef	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	133;"	subroutine	language:Perl
 doChangeEnvType	src/bash/xls-to-rdbms/funcs/change-env-type.func.sh	7;"	function	language:Sh
 doChangeVersion	src/bash/xls-to-rdbms/funcs/dev/change-version.func.sh	6;"	function	language:Sh
 doCheckPerlSyntax	src/bash/xls-to-rdbms/funcs/perl/check-perl-syntax.func.sh	19;"	function	language:Sh
@@ -70,7 +70,7 @@ doCreateRelative7zPackage	src/bash/xls-to-rdbms/funcs/pckg/create-relative-7z-pa
 doCreateRelativePackage	src/bash/xls-to-rdbms/funcs/pckg/create-relative-package.func.sh	8;"	function	language:Sh
 doExit	src/bash/xls-to-rdbms/test-xls-to-rdbms.sh	125;"	function	language:Sh
 doExit	src/bash/xls-to-rdbms/xls-to-rdbms.sh	203;"	function	language:Sh
-doExit	src/perl/xls_to_rdbms/script/xls_to_rdbms.pl	136;"	subroutine	language:Perl
+doExit	src/perl/xls_to_rdbms/script/xls_to_rdbms.pl	137;"	subroutine	language:Perl
 doGenerateActionFiles	src/bash/xls-to-rdbms/funcs/dev/generate-action-files.func.sh	6;"	function	language:Sh
 doGenerateSQL	src/bash/xls-to-rdbms/funcs/generate-sql.func.sh	9;"	function	language:Sh
 doGmailPackage	src/bash/xls-to-rdbms/funcs/pckg/gmail-package.func.sh	5;"	function	language:Sh
@@ -98,10 +98,12 @@ doHelpTmuxCommon	src/bash/xls-to-rdbms/helps/tmux-common.help.sh	7;"	function	la
 doHsr2ToDb	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	33;"	subroutine	language:Perl
 doInit	src/bash/xls-to-rdbms/test-xls-to-rdbms.sh	108;"	function	language:Sh
 doInit	src/bash/xls-to-rdbms/xls-to-rdbms.sh	113;"	function	language:Sh
-doInitialize	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	85;"	subroutine	language:Perl
-doInitialize	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	253;"	subroutine	language:Perl
-doInitialize	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	264;"	subroutine	language:Perl
-doInitialize	src/perl/xls_to_rdbms/script/xls_to_rdbms.pl	118;"	subroutine	language:Perl
+doInitialize	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	106;"	subroutine	language:Perl
+doInitialize	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	257;"	subroutine	language:Perl
+doInitialize	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	251;"	subroutine	language:Perl
+doInitialize	src/perl/xls_to_rdbms/script/xls_to_rdbms.pl	119;"	subroutine	language:Perl
+doInsertDbTables	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	85;"	subroutine	language:Perl
+doInsertDbTablesWithHsr2	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	111;"	subroutine	language:Perl
 doInstantiate	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/DbHandlerFactory.pm	21;"	subroutine	language:Perl
 doListAllInstalledModules	src/perl/xls_to_rdbms/script/xls_to_rdbms_preq_checker.pl	33;"	subroutine	language:Perl
 doLog	src/bash/xls-to-rdbms/test-xls-to-rdbms.sh	166;"	function	language:Sh
@@ -127,8 +129,8 @@ doParseConfFile	src/bash/xls-to-rdbms/xls-to-rdbms.sh	379;"	function	language:Sh
 doPrintHelp	src/bash/xls-to-rdbms/funcs/man/print-help.func.sh	5;"	function	language:Sh
 doPrintUsage	src/bash/xls-to-rdbms/funcs/man/print-usage.func.sh	5;"	function	language:Sh
 doReadConfFile	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	211;"	subroutine	language:Perl
-doReadXlsFileToHashRefs2	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	59;"	subroutine	language:Perl
-doReadXlsFileToHsr3	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	34;"	subroutine	language:Perl
+doReadXlsFileToHashRefs2	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	60;"	subroutine	language:Perl
+doReadXlsFileToHsr2	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	34;"	subroutine	language:Perl
 doRemoveActionFiles	src/bash/xls-to-rdbms/funcs/remove-action-files.func.sh	11;"	function	language:Sh
 doRemovePackage	src/bash/xls-to-rdbms/funcs/pckg/remove-package.func.sh	8;"	function	language:Sh
 doRemovePackage	src/bash/xls-to-rdbms/funcs/remove-package.func.sh	7;"	function	language:Sh
@@ -150,11 +152,10 @@ doRunCmdOrExit	src/bash/xls-to-rdbms/test-xls-to-rdbms.sh	230;"	function	languag
 doRunCmdOrExit	src/bash/xls-to-rdbms/xls-to-rdbms.sh	300;"	function	language:Sh
 doRunPerlTests	src/bash/xls-to-rdbms/funcs/perl/run-perl-tests.func.sh	7;"	function	language:Sh
 doRunTests	src/bash/xls-to-rdbms/test-xls-to-rdbms.sh	54;"	function	language:Sh
-doRunUpsertSql	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	111;"	subroutine	language:Perl
 doRunXlsToRdbms	src/bash/xls-to-rdbms/funcs/perl/run-xls-to-rdbms.func.sh	7;"	function	language:Sh
 doSaveTmuxSession	src/bash/xls-to-rdbms/funcs/sys/tmux/save-tmux-session.func.sh	7;"	function	language:Sh
 doSaveTmuxSession	src/bash/xls-to-rdbms/funcs/sys/tmux/tmux-common.func.sh	12;"	function	language:Sh
-doSelectTableIntoHashRef	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	188;"	subroutine	language:Perl
+doSelectTableIntoHashRef	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	192;"	subroutine	language:Perl
 doSetVars	src/bash/xls-to-rdbms/test-xls-to-rdbms.sh	250;"	function	language:Sh
 doSetVars	src/bash/xls-to-rdbms/xls-to-rdbms.sh	320;"	function	language:Sh
 doSpecBackupFile	src/bash/xls-to-rdbms/specs/sys/backup-file.spec.sh	9;"	function	language:Sh
@@ -208,7 +209,7 @@ doTestRunXlsToRdbms	src/bash/xls-to-rdbms/tests/perl/run-xls-to-rdbms.test.sh	7;
 doTestSaveTmuxSession	src/bash/xls-to-rdbms/tests/save-tmux-session.test.sh	7;"	function	language:Sh
 doTestSaveTmuxSession	src/bash/xls-to-rdbms/tests/sys/tmux/save-tmux-session.test.sh	7;"	function	language:Sh
 doTestTmuxCommon	src/bash/xls-to-rdbms/tests/tmux-common.test.sh	7;"	function	language:Sh
-dumpFields	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	178;"	subroutine	language:Perl
+dumpFields	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	199;"	subroutine	language:Perl
 dumpFields	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	254;"	subroutine	language:Perl
 dumpFields	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm	436;"	subroutine	language:Perl
 dumpFields	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm	116;"	subroutine	language:Perl
@@ -217,7 +218,7 @@ dumpIni	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	301;"	sub
 dump_tmux_session	src/bash/xls-to-rdbms/funcs/sys/tmux/tmux-common.func.sh	6;"	function	language:Sh
 dump_tmux_session	src/bash/xls-to-rdbms/specs/sys/tmux/tmux-common.spec.sh	6;"	function	language:Sh
 flushScreen	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm	238;"	subroutine	language:Perl
-get	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	151;"	subroutine	language:Perl
+get	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	172;"	subroutine	language:Perl
 get	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	379;"	subroutine	language:Perl
 get	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	229;"	subroutine	language:Perl
 get	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm	409;"	subroutine	language:Perl
@@ -231,11 +232,11 @@ is_tainted	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm	516;"	sub
 main	src/bash/xls-to-rdbms/test-xls-to-rdbms.sh	20;"	function	language:Sh
 main	src/bash/xls-to-rdbms/xls-to-rdbms.sh	21;"	function	language:Sh
 main	src/perl/xls_to_rdbms/script/xls_to_rdbms.pl	66;"	subroutine	language:Perl
-new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	114;"	subroutine	language:Perl
+new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	135;"	subroutine	language:Perl
 new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/DbHandlerFactory.pm	57;"	subroutine	language:Perl
-new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	276;"	subroutine	language:Perl
+new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Model/PostGreDbHandler.pm	280;"	subroutine	language:Perl
 new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	57;"	subroutine	language:Perl
-new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	295;"	subroutine	language:Perl
+new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/ExcelHandler.pm	282;"	subroutine	language:Perl
 new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	182;"	subroutine	language:Perl
 new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm	361;"	subroutine	language:Perl
 new	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Logger.pm	55;"	subroutine	language:Perl
@@ -244,7 +245,7 @@ new_tmux_session	src/bash/xls-to-rdbms/funcs/sys/tmux/tmux-common.func.sh	32;"	f
 new_tmux_session	src/bash/xls-to-rdbms/specs/sys/tmux/tmux-common.spec.sh	32;"	function	language:Sh
 session_exists	src/bash/xls-to-rdbms/funcs/sys/tmux/tmux-common.func.sh	22;"	function	language:Sh
 session_exists	src/bash/xls-to-rdbms/specs/sys/tmux/tmux-common.spec.sh	22;"	function	language:Sh
-set	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	165;"	subroutine	language:Perl
+set	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Controller/ControllerXlsToRdbms.pm	186;"	subroutine	language:Perl
 set	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Configurator.pm	391;"	subroutine	language:Perl
 set	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/IO/FileHandler.pm	241;"	subroutine	language:Perl
 set	src/perl/xls_to_rdbms/lib/XlsToRdbms/App/Utils/Initiator.pm	423;"	subroutine	language:Perl

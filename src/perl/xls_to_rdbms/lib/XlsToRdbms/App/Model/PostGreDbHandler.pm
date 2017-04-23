@@ -108,74 +108,91 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 	# by convention is assumed that the first column is unique and update could 
 	# be performed on it ... should there be duplicates the update should fail
 	# -----------------------------------------------------------------------------
-	sub doRunUpsertSql {
+	sub doInsertDbTablesWithHsr2 {
 
-		my $self 			= shift ; 
-		my $table_name 	= shift ; 
-		my $refHeaders 	= shift ; 
-		my $refData 		= shift ; 
-		my $data_str 		= '' ; 
-		my @headers 		= @$refHeaders ; 
-		my @data 			= @$refData ; 
-		my $ret 				= 1 ; 
-		my $msg 				= "undefined error during Upsert to maria db" ; 
-
+		my $self 			   = shift ; 
+		my $hsr2 		      = shift ; 
+		my $ret 				   = 1 ; 
+		my $msg 				   = ' undefined error during insert to db !!! ' ; 
 
       my $sth              = {} ;         # this is the statement handle
       my $dbh              = {} ;         # this is the database handle
       my $str_sql          = q{} ;        # this is the sql string to use for the query
 
-		$objLogger->doLogDebugMsg ( "\@data : @data" ) if $module_trace == 1 ; 
-		$objLogger->doLogDebugMsg ( "\@headers: @headers" ) if $module_trace == 1 ; 
+      # obs this does not support ordered primary key tables first order yet !!!
+      foreach my $table_name ( keys $hsr2 ) { 
+         my $hs_table = $hsr2->{ $table_name } ; 
+         my $hs_headers = $hsr2->{ $table_name }->{ 0 } ; 		   
 
-		my $sql_str = " INSERT INTO $table_name " ; 
-		$sql_str	.= '(' ; 
-		for (my $i=0; $i<scalar (@headers);$i++ ) {
-			$sql_str .= " $headers[$i] " . ' , ' ; 
+         my $dbh = DBI->connect("dbi:Pg:dbname=$db_name", "", "" , {
+              'RaiseError' => 1
+            , 'ShowErrorStatement' => 1
+            , 'AutoCommit' => 1
+         } ) or $msg = DBI->errstr;
+         
+         
+         unless ( defined ( $msg ) ) {
+            $msg = 'INSERT OK' ; 
+            $ret = 0 ; 
+         } else {
+            $objLogger->doLogErrorMsg ( $msg ) ; 
+         }
 
-		} #eof for
-		
-		for (1..3) { chop ( $sql_str) } ; 
-		$sql_str	.= ')' ; 
-		
-		foreach my $cell_value( @data ) {
-			unless ( defined ( $cell_value )) {
-				$cell_value = '' ; 
-			}
-			#$cell_value = q{} ; 
-			$cell_value =~ s|\\|\\\\|g ; 
-			# replace the ' chars with \'
-			$cell_value 		=~ s|\'|\\\'|g ; 
-			$data_str .= "'" . "$cell_value" . "' , " ; 
-		}
-		#eof foreach
-		
-		# remove the " , " at the end 
-		for (1..3) { chop ( $data_str ) } ; 
-		
-		$sql_str	.=  " VALUES (" . "$data_str" . ')' ; 
-					$sql_str	.= ' ON DUPLICATE KEY UPDATE ' ; 
-		
-		for ( my $i=0; $i<scalar(@headers);$i++ ) {
-			$sql_str .= "$headers[$i]" . ' = ' . "'" . "$data[$i]" . "' , " ; 
-		} #eof for
 
-		for (1..3) { chop ( $sql_str) } ; 
+         my $sql_str          = '' ; 
+         my $sql_str_insrt    = " INSERT INTO $table_name " ; 
+         $sql_str_insrt      .= '(' ; 
 
-		$objLogger->doLogDebugMsg ( "sql_str : $sql_str " ) if $module_trace == 1 ; 
+         foreach my $col_num ( sort ( keys %$hs_headers )) {
+            my $column_name = $hs_headers->{ $col_num } ; 
+            $sql_str_insrt .= " $column_name " . ' , ' ; 
 
-		$sth = $dbh->prepare($sql_str ) ; 
-		
-		$ret = 0 ; $msg = 'upsert ok' ; 
-		$sth->execute( ) or $ret = 1  ;
-		$msg = $DBI::errstr if ( $ret == 1 ) ; 
-		$objLogger->LogErrorMsg ( " DBI upsert error on table: $table_name: " . $msg ) 
-			if ( $ret == 1 ) ;  
-		
-		$objLogger->doLogDebugMsg ( "ret is $ret " ) if $module_trace == 1 ; 
-		$self->CloseConnection();
+         } #eof for
+         
+         for (1..3) { chop ( $sql_str_insrt) } ; 
+         $sql_str_insrt	.= ')' ; 
+        
+         foreach my $row_num ( sort ( keys %$hs_table ) ) { 
 
-		$msg .= " for table : $table_name" ; 
+            next if $row_num == 0 ; 
+            my $hs_row = $hs_table->{ $row_num } ; 
+            my $data_str = q{} ; 
+
+            foreach my $col_num ( sort ( keys ( %$hs_row ) ) ) {
+               my $cell_value = $hs_row -> { $col_num } ; 
+               unless ( defined ( $cell_value )) {
+                  $cell_value = '' ; 
+               }
+               #$cell_value = q{} ; 
+               $cell_value =~ s|\\|\\\\|g ; 
+               # replace the ' chars with \'
+               $cell_value 		=~ s|\'|\\\'|g ; 
+               $data_str .= "'" . "$cell_value" . "' , " ; 
+            }
+            #eof foreach col_num
+            
+            # remove the " , " at the end 
+            for (1..3) { chop ( $data_str ) } ; 
+            
+            $sql_str .= $sql_str_insrt ;  
+            $sql_str	.=  " VALUES (" . "$data_str" . ') ; ' . "\n" ; 
+
+            $objLogger->doLogDebugMsg ( "sql_str : $sql_str " ) ; 
+
+         } 
+         #eof foreach row
+ 
+         $ret = $dbh->do( $sql_str ) ; 
+
+         if ( $ret == 1 ) { 
+            $msg = $DBI::errstr ;  
+            $objLogger->doLogErrorMsg ( " DBI upsert error on table: $table_name: " . $msg )  ; 
+            return ( $ret , $msg ) ; 
+         }
+         
+         $ret = 0 ; $msg = 'upsert ok' ; 
+      } 
+      #eof foreach table_name
 		
 		return ( $ret , $msg ) ; 
 	}
