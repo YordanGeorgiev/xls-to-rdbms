@@ -15,7 +15,7 @@ package XlsToRdbms::App::Controller::ControllerXlsToRdbms ;
    use XlsToRdbms::App::Utils::IO::ExcelHandler ; 
    use XlsToRdbms::App::Model::DbHandlerFactory ; 
 	
-	our $module_trace                = 0 ; 
+	our $module_trace                = 1 ; 
    our $hsr2                        = {} ;      
 	our $appConfig						   = {} ; 
 	our $RunDir 						   = '' ; 
@@ -90,15 +90,14 @@ package XlsToRdbms::App::Controller::ControllerXlsToRdbms ;
       my $msg                 = 'unknown error while inserting db tables !!!' ; 
       my $rdbms_type          = $appConfig->{ 'rdbms_type' } || 'postgre' ; 
 
-	   my $objExcelHandler     = 'XlsToRdbms::App::Utils::IO::ExcelHandler'->new ( \$appConfig ) ; 
-      
       my $objDbHandlerFactory = 'XlsToRdbms::App::Model::DbHandlerFactory'->new( \$appConfig , $self ) ; 
       my $objDbHandler 		   = $objDbHandlerFactory->doInstantiate ( "$rdbms_type" );
+      p($hsr2) if $module_trace == 1 ; 
 
-      p($hsr2);
-      ( $ret , $msg )         = $objDbHandler->doInsertDbTablesWithHsr2( $hsr2 ) ; 
+      ( $ret , $msg  )        = $objDbHandler->doInsertDbTablesWithHsr2( $hsr2 ) ; 
       return ( $ret , $msg ) ; 
    } 
+
 
 	#
 	# --------------------------------------------------------

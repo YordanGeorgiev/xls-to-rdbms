@@ -7,6 +7,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 	use Encode qw( encode_utf8 is_utf8 );
    use POSIX qw(strftime);
    use DBI ; 
+   use DBD::Pg ; 
 	use Data::Printer ; 
 	use Carp ; 
 
@@ -76,7 +77,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       $debug_msg .= "\n db_user: $db_user \n db_user_pw $db_user_pw \n" ; 
       $objLogger->doLogDebugMsg ( $debug_msg ) ; 
      
-      my $dbh = DBI->connect("dbi:Pg:dbname=$db_name", "", "" , {
+      my $dbh = DBI->connect("DBI:Pg:dbname=$db_name", "", "" , {
            'RaiseError' => 1
          , 'ShowErrorStatement' => 1
          , 'AutoCommit' => 1
@@ -102,6 +103,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 	}
 	#eof sub doHsr2ToDb
 
+
 	#
 	# -----------------------------------------------------------------------------
 	# runs the insert sql by passed data part 
@@ -113,41 +115,44 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 		my $self 			   = shift ; 
 		my $hsr2 		      = shift ; 
 		my $ret 				   = 1 ; 
-		my $msg 				   = ' undefined error during insert to db !!! ' ; 
+		my $msg 				   = ' failed to connect during insert to db !!! ' ; 
 
       my $sth              = {} ;         # this is the statement handle
       my $dbh              = {} ;         # this is the database handle
       my $str_sql          = q{} ;        # this is the sql string to use for the query
+      my $rv               = 0 ;          # apperantly insert ok returns rv = 1 !!! 
 
       # obs this does not support ordered primary key tables first order yet !!!
-      foreach my $table_name ( keys $hsr2 ) { 
+      foreach my $table_name ( keys %$hsr2 ) { 
          my $hs_table = $hsr2->{ $table_name } ; 
          my $hs_headers = $hsr2->{ $table_name }->{ 0 } ; 		   
-
-         my $dbh = DBI->connect("dbi:Pg:dbname=$db_name", "", "" , {
-              'RaiseError' => 1
-            , 'ShowErrorStatement' => 1
-            , 'AutoCommit' => 1
-         } ) or $msg = DBI->errstr;
+     
+         eval { 
+            $dbh = DBI->connect("dbi:Pg:dbname=$db_name", "", "" , {
+                 'RaiseError'          => 1
+               , 'ShowErrorStatement'  => 1
+               , 'AutoCommit'          => 1
+            } ); 
+         } or $ret = 2  ;
          
-         
-         unless ( defined ( $msg ) ) {
-            $msg = 'INSERT OK' ; 
-            $ret = 0 ; 
-         } else {
+         if ( $ret == 2 ) {
+            $msg = DBI->errstr;
             $objLogger->doLogErrorMsg ( $msg ) ; 
+            return ( $ret , $msg ) ; 
+         } else {
+            $msg = 'CONNECT OK' ; 
+            $objLogger->doLogDebugMsg ( $msg ) ; 
          }
-
 
          my $sql_str          = '' ; 
          my $sql_str_insrt    = " INSERT INTO $table_name " ; 
          $sql_str_insrt      .= '(' ; 
 
          foreach my $col_num ( sort ( keys %$hs_headers )) {
+
             my $column_name = $hs_headers->{ $col_num } ; 
             $sql_str_insrt .= " $column_name " . ' , ' ; 
-
-         } #eof for
+         } 
          
          for (1..3) { chop ( $sql_str_insrt) } ; 
          $sql_str_insrt	.= ')' ; 
@@ -160,10 +165,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 
             foreach my $col_num ( sort ( keys ( %$hs_row ) ) ) {
                my $cell_value = $hs_row -> { $col_num } ; 
-               unless ( defined ( $cell_value )) {
-                  $cell_value = '' ; 
-               }
-               #$cell_value = q{} ; 
+               $cell_value = '' unless ( defined ( $cell_value )) ; 
                $cell_value =~ s|\\|\\\\|g ; 
                # replace the ' chars with \'
                $cell_value 		=~ s|\'|\\\'|g ; 
@@ -177,26 +179,34 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
             $sql_str .= $sql_str_insrt ;  
             $sql_str	.=  " VALUES (" . "$data_str" . ') ; ' . "\n" ; 
 
-            $objLogger->doLogDebugMsg ( "sql_str : $sql_str " ) ; 
+            # $objLogger->doLogDebugMsg ( "sql_str : $sql_str " ) ; 
 
          } 
          #eof foreach row
- 
-         $ret = $dbh->do( $sql_str ) ; 
 
-         if ( $ret == 1 ) { 
-            $msg = $DBI::errstr ;  
-            $objLogger->doLogErrorMsg ( " DBI upsert error on table: $table_name: " . $msg )  ; 
-            return ( $ret , $msg ) ; 
+         # Action !!! 
+         eval { 
+            $rv = $dbh->do($sql_str) ; 
+         } or $msg = $@ ; 
+
+         unless ( $rv == 1 ) { 
+            $msg .= " DBI upsert error on table: $table_name: " . $msg  ; 
+            $objLogger->doLogFatalMsg ( $msg ) ;   ; 
+            return ( $ret , $msg ) ; # all or nothing ok 
+         } 
+         else {  
+            $msg = "upsert OK for table $table_name" ;          
+            $objLogger->doLogInfoMsg ( $msg ) ; 
          }
-         
-         $ret = 0 ; $msg = 'upsert ok' ; 
+
       } 
       #eof foreach table_name
 		
+      $ret = 0 ; $msg = 'upsert OK for all tables' ; 
 		return ( $ret , $msg ) ; 
 	}
 	#eof sub doRunUpsertSql
+
 
    #
    # -----------------------------------------------------------------------------
@@ -215,8 +225,6 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       my $sth              = {} ;         # this is the statement handle
       my $dbh              = {} ;         # this is the database handle
       my $str_sql          = q{} ;        # this is the sql string to use for the query
-
-
 
       $str_sql = 
          " SELECT 
