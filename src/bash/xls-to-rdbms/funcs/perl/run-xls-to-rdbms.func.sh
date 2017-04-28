@@ -13,7 +13,7 @@ doRunXlsToRdbms(){
 	# add your action implementation code here ... 
    nice_date=$(date "+%Y-%m-%d")
    nice_year=$(date "+%Y-%m")
-   xls_file='/vagrant/csitea/issue-tracker/doc/txt/issues/2017/2017-04/2017-04-22/issue-tracker.issues.2017-04-22.daily.200617.xlsx'
+   xls_file='/vagrant/ysg/data/txt/issues/2017/2017-04/2017-04-25/.170911.xlsx'
    
    # Action ... !!!
    perl src/perl/xls_to_rdbms/script/xls_to_rdbms.pl --do xls-to-db --xls-file $xls_file

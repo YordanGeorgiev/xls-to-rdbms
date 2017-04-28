@@ -53,8 +53,9 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 
 		   foreach my $key ( sort(keys( %{$row_hash} ) ) ) {
             $str_col_list .= ' , ' . $key ; 
-            my $value     = $row_hash->{ $key } ; 
-            $value        =~ s/'/''/g ; 
+            my $value     = $row_hash->{ $key } || 'null' ; 
+            $value =~ s|\\|\\\\|g ;
+            $value       =~ s|\'|\\\'|g ;
             $str_val_list .= ' , \'' . $value . '\''; 
          }
          
@@ -68,7 +69,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
          $str_val_list = '' ; 
       }
       
-      # p ( $str_sql_insert ) if $module_trace == 1 ; 
+      p ( $str_sql_insert ) if $module_trace == 1 ; 
 
       # proper authentication implementation src:
       # http://stackoverflow.com/a/19980156/65706
@@ -164,7 +165,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
                $cell_value = '' unless ( defined ( $cell_value )) ; 
                $cell_value =~ s|\\|\\\\|g ; 
                # replace the ' chars with \'
-               $cell_value 		=~ s|\'|\\\'|g ; 
+               $cell_value 		=~ s|\'|\'\'|g ; 
                $data_str .= "'" . "$cell_value" . "' , " ; 
             }
             #eof foreach col_num
