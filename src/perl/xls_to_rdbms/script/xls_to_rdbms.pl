@@ -59,7 +59,7 @@ my $msg                          = q{} ;
 my $objConfigurator              = {} ; 
 my $actions                      = q{} ; 
 my $tables_list                  = q{} ; 
-
+my $db_name                      = q{} ; 
    #
    # the main shell entry point of the application
    #
@@ -70,15 +70,6 @@ my $tables_list                  = q{} ;
     
       print " xls_to_rdbms.pl START  \n " ; 
       doInitialize();	
-
-      GetOptions(	
-           'xls-file=s'       => \$xls_file
-         , 'do=s'             => \$actions
-         , 'tables=s'         => \$tables_list
-      );
-      
-      $appConfig->{ 'xls_file' } = $xls_file ; 
-      $appConfig->{ 'tables_list' } = $tables_list ; 
 
       $actions = 'file-to-db' unless ( $actions )  ; 
 
@@ -91,7 +82,6 @@ my $tables_list                  = q{} ;
          if ( $action eq 'xls-to-db' ) {
             $msg = 'xls_file to parse : ' . "\n" . $xls_file ; 
             $objLogger->doLogInfoMsg ( "$msg" ) ; 
-
             my $objControllerXlsToRdbms = 
                'XlsToRdbms::App::Controller::ControllerXlsToRdbms'->new ( \$appConfig ) ; 
             ( $ret , $msg ) = $objControllerXlsToRdbms->doReadXlsFileToHashRefs2 ( $xls_file ) ; 
@@ -116,6 +106,7 @@ my $tables_list                  = q{} ;
    #eof sub main
 
 
+
    sub doInitialize {
 
       $objInitiator 		= 'XlsToRdbms::App::Utils::Initiator'->new();
@@ -128,28 +119,43 @@ my $tables_list                  = q{} ;
          
       $objLogger->doLogInfoMsg ( "START MAIN") ; 
       $objLogger->doLogInfoMsg ( "START LOGGING SETTINGS ") ; 
+
+
+      GetOptions(	
+           'xls-file=s'       => \$xls_file
+         , 'do=s'             => \$actions
+         , 'db_name=s'        => \$db_name
+         , 'tables=s'         => \$tables_list
+      );
+      
+      $appConfig->{ 'xls_file' } = $xls_file ; 
+      $appConfig->{ 'tables_list' } = $tables_list ; 
+      $appConfig->{ 'db_name' } = $db_name if ( $db_name ) ; 
+
       p ( $appConfig  ) ; 
       $objLogger->doLogInfoMsg ( "STOP  LOGGING SETTINGS ") ; 
+   } 
+   #eof sub doInitialize
 
-   }
 
-
+   #
+   # pass the exit msg and the exit to the calling process
+   #
    sub doExit {
 
-      my $exit_code = shift ; 
-      my $exit_msg  = shift ; 
-
+      my $exit_code  = shift ;
+      my $exit_msg   = shift || 'exit xls_to_rdbms.pl' ;
 
       if ( $exit_code == 0 ) {
-         $objLogger->doLogInfoMsg ( $msg ) ;       
+         $objLogger->doLogInfoMsg ( $exit_msg ) ;
       } else {
-
-         $objLogger->doLogErrorMsg ( $msg ) ;       
-         $objLogger->doLogFatalMsg ( $msg ) ;       
+         $objLogger->doLogErrorMsg ( $exit_msg ) ;
+         $objLogger->doLogFatalMsg ( $exit_msg ) ;
       }
 
-      $objLogger->doLogInfoMsg ( "STOP  MAIN") ; 
-      exit ( $exit_code ) ; 
+      my $msg = "STOP MAIN for $0" ;
+      $objLogger->doLogInfoMsg ( $msg ) ;
+      exit ( $exit_code ) ;
    }
 
 

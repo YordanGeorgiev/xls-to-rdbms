@@ -43,6 +43,11 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
       my $str_val_list     = q{} ; 
       my $error_msg        = q{} ; 
 
+      #( $ret , $msg ) = $self->doTruncateTable ( 'issue' ) ; 
+      #return ( $ret , $msg ) unless ( $ret == 0 ) ; 
+     
+      $str_sql_insert .= ' TRUNCATE TABLE issue ; ' ; 
+      
 
       my $debug_msg        = 'START doInsertSqlHashData' ; 
       $objLogger->doLogDebugMsg ( $debug_msg ) ; 
@@ -103,6 +108,52 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
 
 
 	#
+   # ------------------------------------------------------
+	#  input: hash ref of hash refs containing the issues 
+	#  file data  and meta data 
+   # ------------------------------------------------------
+	sub doTruncateTable {
+
+		my $self 				= shift ; 
+		my $table 			   = shift ; 	# the table to truncat
+      
+      my $ret              = 1 ; 
+      my $msg              = 'unknown error while sql truncate ' ; 		
+      my $str_sql_truncate = q{} ; 
+      my $error_msg        = q{} ; 
+
+      $str_sql_truncate .= 'TRUNCATE TABLE issue ; ' ; 
+
+      my $debug_msg        = 'START doTruncateTable' ; 
+      $objLogger->doLogDebugMsg ( $debug_msg ) ; 
+	  
+     
+      my $dbh = DBI->connect("DBI:Pg:dbname=$db_name", "", "" , {
+           'RaiseError' => 1
+         , 'ShowErrorStatement' => 1
+         , 'AutoCommit' => 1
+      } ) or $msg = DBI->errstr;
+      
+      
+      $ret = $dbh->do( $str_sql_truncate ) ; 
+      $msg = DBI->errstr ; 
+
+      unless ( defined ( $msg ) ) {
+         $msg = 'INSERT OK' ; 
+         $ret = 0 ; 
+      } else {
+         $objLogger->doLogErrorMsg ( $msg ) ; 
+      }
+
+      # src: http://search.cpan.org/~rudy/DBD-Pg/Pg.pm  , METHODS COMMON TO ALL HANDLES
+
+      $debug_msg        = 'doTruncateTable ret ' . $ret ; 
+      $objLogger->doLogDebugMsg ( $debug_msg ) ; 
+      
+      return ( $ret , $msg ) ; 	
+	}
+	#eof sub doHsr2ToDb
+	#
 	# -----------------------------------------------------------------------------
 	# runs the insert sql by passed data part 
 	# by convention is assumed that the first column is unique and update could 
@@ -143,7 +194,7 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
          }
 
          my $sql_str          = '' ; 
-         my $sql_str_insrt    = " INSERT INTO $table_name " ; 
+         my $sql_str_insrt    = "INSERT INTO $table_name " ; 
          $sql_str_insrt      .= '(' ; 
 
          foreach my $col_num ( sort ( keys %$hs_headers )) {
@@ -176,33 +227,34 @@ package XlsToRdbms::App::Model::PostGreDbHandler ;
             $sql_str .= $sql_str_insrt ;  
             $sql_str	.=  " VALUES (" . "$data_str" . ') ; ' . "\n" ; 
 
-            # $objLogger->doLogDebugMsg ( "sql_str : $sql_str " ) ; 
 
          } 
          #eof foreach row
+           	
+				$sql_str = "TRUNCATE TABLE $table_name ; $sql_str " ; 	 
+            $objLogger->doLogDebugMsg ( "sql_str : $sql_str " ) ; 
 
          # Action !!! 
+         $msg = " DBI upsert error on table: $table_name: " . $msg  ; $ret = 1 ; 
          eval { 
             $rv = $dbh->do($sql_str) ; 
-         } or $msg = $@ ; 
+         } or return ( $ret , $msg ) ; 
 
-         unless ( $rv == 1 ) { 
-            $msg .= " DBI upsert error on table: $table_name: " . $msg  ; 
-            $objLogger->doLogFatalMsg ( $msg ) ;   ; 
-            return ( $ret , $msg ) ; # all or nothing ok 
-         } 
-         else {  
+
+
+         if ( $rv == 1 ) { 
             $msg = "upsert OK for table $table_name" ;          
             $objLogger->doLogInfoMsg ( $msg ) ; 
+            $ret = 0 ; 
          }
 
       } 
       #eof foreach table_name
 		
-      $ret = 0 ; $msg = 'upsert OK for all tables' ; 
+      $msg = 'upsert OK for all tables' ; 
 		return ( $ret , $msg ) ; 
 	}
-	#eof sub doRunUpsertSql
+	#eof sub doInsertDbTablesWithHsr2
 
 
    #

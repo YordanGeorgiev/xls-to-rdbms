@@ -13,9 +13,12 @@ doRunXlsToRdbms(){
 	# add your action implementation code here ... 
    nice_date=$(date "+%Y-%m-%d")
    nice_year=$(date "+%Y-%m")
-   xls_file='/vagrant/ysg/data/txt/issues/2017/2017-04/2017-04-25/.170911.xlsx'
+   export xls_file=$(find $proj_txt_dir -name '*.xlsx'| sort -nr|head -n 1)
    
+   test -z "$xls_file" && doExit 1 "you should export xls_file=<<path-to-input-xls-file>>" 
    # Action ... !!!
+   # debug echo perl src/perl/xls_to_rdbms/script/xls_to_rdbms.pl --do xls-to-db --xls-file $xls_file
+   # debug sleep 6
    perl src/perl/xls_to_rdbms/script/xls_to_rdbms.pl --do xls-to-db --xls-file $xls_file
    exit_code=$?
    doLog "INFO doRunXlsToRdbms exit_code $exit_code"
